@@ -1,0 +1,273 @@
+@mixin flex(
+  $justify: justify-content,
+  $align: center,
+  $direction: row,
+  $gap: 0,
+  $flexWrap: wrap
+) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: $justify;
+  -ms-flex-pack: $justify;
+  justify-content: $justify;
+  -webkit-box-align: $align;
+  -ms-flex-align: $align;
+  align-items: $align;
+  @if ($direction != "") {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: $direction;
+    flex-direction: $direction;
+  }
+  @if ($flexWrap != "") {
+    flex-wrap: $flexWrap;
+  }
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+@mixin flex-align-center($align: center, $wrap: nowrap, $gap: 0) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: $align;
+  -ms-flex-align: $align;
+  align-items: $align;
+  flex-wrap: $wrap;
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+@mixin width-height($width, $height: $width) {
+  @if $width == "fit-content" {
+    width: -moz-fit-content;
+  }
+  width: $width;
+  @if $height != "" {
+    height: $height;
+  }
+}
+
+@mixin centerWidthHeight(
+  $width,
+  $height: $width,
+  $lineHeight: $height,
+  $text-align: center
+) {
+  @if $width == "fit-content" {
+    width: -moz-fit-content;
+  }
+  width: $width;
+  height: $height;
+  line-height: $lineHeight;
+  text-align: $text-align;
+}
+
+@mixin square($width, $border-radius: 0) {
+  width: $width;
+  height: $width;
+  @if border-radius != 0 {
+    border-radius: $border-radius;
+    -webkit-border-radius: $border-radius;
+    -moz-border-radius: $border-radius;
+    -ms-border-radius: $border-radius;
+    -o-border-radius: $border-radius;
+  }
+}
+@mixin text-uppercase($font-size, $font-weight) {
+  text-transform: uppercase;
+  font-size: $font-size;
+  font-weight: $font-weight;
+}
+
+@mixin text-capitalize($font-size, $font-weight) {
+  text-transform: capitalize;
+  font-size: $font-size;
+  font-weight: $font-weight;
+}
+
+@mixin border-radius($size) {
+  border-radius: $size;
+  -webkit-border-radius: $size;
+  -moz-border-radius: $size;
+  -ms-border-radius: $size;
+  -o-border-radius: $size;
+}
+
+@mixin border($width, $color, $border-radius: 0, $location: "all") {
+  @if $location == "left" {
+    border-left: $width solid $color;
+  }
+  @if $location == "right" {
+    border-right: $width solid $color;
+  }
+
+  @if $location == "top" {
+    border-top: $width solid $color;
+  }
+
+  @if $location == "bottom" {
+    border-bottom: $width solid $color;
+  }
+
+  @if $location == "all" {
+    border-left: $width solid $color;
+  }
+  @if $location == "x" {
+    border-left: $width solid $color;
+    border-right: $width solid $color;
+  }
+  @if $location == "y" {
+    border-top: $width solid $color;
+    border-bottom: $width solid $color;
+  }
+
+  @if $border-radius != 0 {
+    border-radius: $border-radius;
+  }
+}
+
+@mixin box-shadow($v-offset, $blur, $color: rgba(0, 0, 0, 0.2)) {
+  -webkit-box-shadow: 0 $v-offset $blur $color;
+  box-shadow: 0 $v-offset $blur $color;
+}
+
+@mixin transition-cubic($time, $delay: 0s) {
+  -webkit-transition: all $time cubic-bezier(0.175, 0.885, 0.32, 1.275) $delay;
+  -moz-transition: all $time cubic-bezier(0.175, 0.885, 0.32, 1.275) $delay;
+  -ms-transition: all $time cubic-bezier(0.175, 0.885, 0.32, 1.275) $delay;
+  -o-transition: all $time cubic-bezier(0.175, 0.885, 0.32, 1.275) $delay;
+  transition: all $time cubic-bezier(0.175, 0.885, 0.32, 1.275) $delay;
+}
+
+@mixin transition-ease-in-out($time, $delay: 0s) {
+  -webkit-transition: all $time ease-in-out $delay;
+  -moz-transition: all $time ease-in-out $delay;
+  -ms-transition: all $time ease-in-out $delay;
+  -o-transition: all $time ease-in-out $delay;
+  transition: all $time ease-in-out $delay;
+}
+
+@mixin transition($property, $time, $type: linear, $delay: 0) {
+  transition: $property $time $type;
+  -webkit-transition: $property $time $type;
+  -o-transition: $property $time $type;
+  -moz-transition: $property $time $type;
+  -ms-transition: $property $time $type;
+  @if $delay != 0 {
+    transition-delay: $delay;
+  }
+}
+
+@mixin transform-translate($type, $x, $y: $x) {
+  @if $type == "xy" {
+    transform: translate($x, $y);
+    -webkit-transform: translate($x, $y);
+    -ms-transform: translate($x, $y);
+    -moz-transform: translate($x, $y);
+    -o-transform: translate($x, $y);
+  }
+  @if $type == "x" {
+    transform: translateX($x);
+    -webkit-transform: translateX($x);
+    -ms-transform: translateX($x);
+    -moz-transform: translateX($x);
+    -o-transform: translateX($x);
+  }
+  @if $type == "y" {
+    transform: translateY($y);
+    -webkit-transform: translateY($y);
+    -ms-transform: translateY($y);
+    -moz-transform: translateY($y);
+    -o-transform: translateY($y);
+  }
+}
+
+@mixin image($padding-top, $height: 0) {
+  width: 100%;
+  height: 0;
+  padding-top: $padding-top;
+}
+
+@mixin bgc-image($paddingTop: 0, $border: 0) {
+  width: 100%;
+  height: 0;
+  padding-top: $paddingTop;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  @if $border != 0 {
+    border-radius: $border;
+    -webkit-border-radius: $border;
+    -moz-border-radius: $border;
+    -ms-border-radius: $border;
+    -o-border-radius: $border;
+  }
+}
+
+@mixin border-radius($size) {
+  border-radius: $size;
+  -webkit-border-radius: $size;
+  -moz-border-radius: $size;
+  -ms-border-radius: $size;
+  -o-border-radius: $size;
+}
+
+// @mixin font($font-size, $font-weight, $color) {
+//     font-size: $font-size;
+//     // @if $font-weight !=0 {
+//     // font-weight: $font-weight;
+//     // // }
+//     // // @if $color != 0 {
+//     // color: $color;
+//     // }
+// }
+
+@mixin absolute($top, $right, $bottom, $left) {
+  position: absolute;
+  @if $top != "" {
+    top: $top;
+  }
+  @if $bottom != "" {
+    bottom: $bottom;
+  }
+  @if $left != "" {
+    left: $left;
+  }
+  @if $right != "" {
+    right: $right;
+  }
+}
+@mixin relative($top, $right, $bottom, $left) {
+  position: relative;
+  @if $top != "" {
+    top: $top;
+  }
+  @if $bottom != "" {
+    bottom: $bottom;
+  }
+  @if $left != "" {
+    left: $left;
+  }
+  @if $right != "" {
+    right: $right;
+  }
+}
+@mixin respond-to($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
+  @if $raw-query {
+    $query: if(type-of($raw-query) == "string", unquote($raw-query), inspect($raw-query));
+    @media #{$query} {
+      @content;
+    }
+  }
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
