@@ -1,5 +1,6 @@
+@import "./mixin.scss";
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
 *,
 *:after,
@@ -12,6 +13,7 @@ a {
   text-decoration: none !important;
   color: inherit;
   transition: all 0.2s ease-in-out 0s;
+  outline: none;
 }
 a:hover {
   text-decoration: none !important;
@@ -36,4 +38,96 @@ body {
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth !important;
   letter-spacing: normal;
+}
+
+.ml-50 {
+  margin-left: 50px;
+}
+
+.btn {
+  padding: 15px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.5s;
+  border-width: 2px;
+  line-height: 1.2;
+  border: 2px solid #f17732;
+  width: 100%;
+}
+
+.btn-secondary {
+  background-color: #f17732;
+  color: #fff;
+  &:hover {
+    background-color: #f49762;
+    color: #fff;
+    border: 2px solid #f49762;
+  }
+}
+
+button.back-to-top {
+  border-style: solid;
+  border-width: 0;
+  bottom: 15px;
+  box-shadow: 0 10px 30px 0 rgb(31 34 120 / 10%);
+  color: #fff;
+  background-color: #565acf;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 45px;
+  margin: 0;
+  position: fixed;
+  right: 15px;
+  text-align: center;
+  width: 45px;
+  z-index: 999;
+  padding: 0;
+  font-size: 14px;
+}
+
+@include keyframes(left-right) {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+@include keyframes(up-down) {
+  0% {
+    -webkit-transform: translatey(0);
+    transform: translatey(0);
+  }
+
+  100% {
+    -webkit-transform: translatey(-10px);
+    transform: translatey(-10px);
+  }
+}
+
+@include keyframes(rotation) {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn);
+  }
+}
+.animate-wave {
+  animation: left-right 1.5s infinite alternate;
+}
+
+.animate-updown {
+  animation: up-down 1.5s infinite alternate;
+}
+
+.animate-rotate {
+  animation: rotation 20s linear infinite;
 }
