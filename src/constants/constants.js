@@ -1,6 +1,7 @@
 export const ROUTE = {
   HOME: "/",
   NOT_FOUND: "*",
+  LOGIN: "/login",
 };
 
 export const WIDGET_DATA = {
@@ -57,3 +58,72 @@ export const WIDGET_DATA = {
     },
   ],
 };
+
+export const NAV_DATA = [
+  {
+    title: "Home",
+    path: "/",
+  },
+  {
+    title: "Pages",
+    path: "/",
+    dropData: [
+      {
+        title: "About Us",
+        path: "/about",
+      },
+      {
+        title: "Out Team",
+        path: "/team",
+      },
+      {
+        title: "Faq's",
+        path: "/faq",
+      },
+      {
+        title: "Booking",
+        path: "/booking",
+      },
+      {
+        title: "Error 404",
+        path: "/error",
+      },
+      {
+        title: "Login/Register",
+        path: "/login",
+      },
+    ],
+  },
+  {
+    title: "Services",
+    path: "/",
+    dropData: [
+      {
+        title: "Service",
+        path: "/service",
+      },
+      {
+        title: "Service Detail",
+        path: "/service-detail",
+      },
+    ],
+  },
+  {
+    title: "Blog",
+    path: "/blogs",
+    dropData: [
+      {
+        title: "Blogs",
+        path: "/blogs",
+      },
+      {
+        title: "Blog Detail",
+        path: "/blog-detail",
+      },
+    ],
+  },
+  {
+    title: "Contact Us",
+    path: "/contact",
+  },
+];

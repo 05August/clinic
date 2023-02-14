@@ -67,6 +67,15 @@ body {
   }
 }
 
+.btn-primary {
+  background-color: #565acf;
+  border: none;
+}
+
+.btn-primary.shadow {
+  box-shadow: 0 5px 20px 0 rgba(86, 90, 207, 0.3) !important;
+}
+
 button.back-to-top {
   border-style: solid;
   border-width: 0;
