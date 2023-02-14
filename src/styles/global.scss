@@ -80,11 +80,13 @@ button.back-to-top {
   margin: 0;
   position: fixed;
   right: 15px;
-  text-align: center;
   width: 45px;
   z-index: 999;
   padding: 0;
-  font-size: 14px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @include keyframes(left-right) {
