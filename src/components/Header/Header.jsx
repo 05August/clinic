@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useSearchParams, Link } from "react-router-dom";
 import logo from "../../assets/img/logo.png";
@@ -6,11 +6,19 @@ import { ROUTE, NAV_DATA } from "../../constants/constants";
 import { HiPlusSm, HiOutlineSearch } from "react-icons/hi";
 import "./header.scss";
 const Header = () => {
+  const [offset, setOffset] = useState(0);
   const [searchValue, setSearchValue] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
 
+  useEffect(() => {
+    const onScroll = () => setOffset(window.pageYOffset);
+    window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="header">
+    <header className={offset > 50 ? "is-fixed header" : "header"}>
       <div className="header-left">
         <div className="logo">
           <Link to={ROUTE.HOME}>

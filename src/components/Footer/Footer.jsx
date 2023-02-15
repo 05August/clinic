@@ -160,7 +160,7 @@ const Footer = () => {
         onClick={() => {
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
-        style={{ display: offset > 50 ? "flex" : "none" }}
+        style={{ display: offset > 200 ? "flex" : "none" }}
       >
         <FaArrowUp />
       </button>
