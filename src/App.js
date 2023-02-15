@@ -2,6 +2,7 @@ import { Empty } from "antd";
 import { Routes, Route, Link } from "react-router-dom";
 import { ROUTE } from "./constants/constants";
 import DefaultLayout from "./layouts/DefaultLayout";
+import Home from "./pages/user/Home/Home";
 import "./styles/style.scss";
 function App() {
   return (
@@ -24,7 +25,9 @@ function App() {
             </Link>
           }
         />
-        <Route path={ROUTE.HOME} element={<DefaultLayout />}></Route>
+        <Route path={ROUTE.HOME} element={<DefaultLayout />}>
+          <Route index element={<Home />} />
+        </Route>
       </Routes>
     </div>
   );

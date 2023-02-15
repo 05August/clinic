@@ -54,7 +54,6 @@ body {
   border-width: 2px;
   line-height: 1.2;
   border: 2px solid #f17732;
-  width: 100%;
 }
 
 .btn-secondary {
@@ -96,6 +95,23 @@ button.back-to-top {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.bg-title{
+  background: url("../assets/img/bg_title.png") repeat 50%;
+}
+
+.bg-br-title{
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 85px;
+    height: 7px;
+    background-image: url("../assets/img/footer_bg_title.png");
+    background-repeat: no-repeat;
+  }
 }
 
 @include keyframes(left-right) {
