@@ -8,7 +8,7 @@ export const WIDGET_DATA = {
   quickLink: [
     {
       title: "About Us",
-      path: "/about",
+      path: "/about-us",
     },
     {
       title: "Services",
@@ -70,7 +70,7 @@ export const NAV_DATA = [
     dropData: [
       {
         title: "About Us",
-        path: "/about",
+        path: "/about-us",
       },
       {
         title: "Out Team",

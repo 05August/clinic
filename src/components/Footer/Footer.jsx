@@ -69,19 +69,19 @@ const Footer = () => {
             </Col>
             <Col lg={3} sm={6} xs={6}>
               <div className="widget widget-path ml-50">
-                <h3 className="widget__title">Quick Links</h3>
+                <h3 className="widget__title bg-br-title">Quick Links</h3>
                 {renderWidget(WIDGET_DATA.quickLink)}
               </div>
             </Col>
             <Col lg={3} sm={6} xs={6}>
               <div className="widget widget-path">
-                <h3 className="widget__title">Our Service</h3>
+                <h3 className="widget__title bg-br-title">Our Service</h3>
                 {renderWidget(WIDGET_DATA.ourService)}
               </div>
             </Col>
             <Col lg={3} md={6} sm={12} xs={12}>
               <div className="widget widget-form">
-                <h3 className="widget__title">Subcribe</h3>
+                <h3 className="widget__title bg-br-title">Subcribe</h3>
                 <form className="subscribe-form">
                   <div className="input-group">
                     <input
