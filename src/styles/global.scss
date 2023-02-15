@@ -71,6 +71,16 @@ body {
   border: none;
 }
 
+.btn-outline-primary {
+  color: #565acf;
+  border-color: #565acf;
+  &:hover {
+    color: #fff;
+    background-color: #565acf;
+    border-color: #565acf;
+  }
+}
+
 .btn-primary.shadow {
   box-shadow: 0 5px 20px 0 rgba(86, 90, 207, 0.3) !important;
 }
@@ -97,11 +107,11 @@ button.back-to-top {
   justify-content: center;
 }
 
-.bg-title{
+.bg-title {
   background: url("../assets/img/bg_title.png") repeat 50%;
 }
 
-.bg-br-title{
+.bg-br-title {
   &::after {
     content: "";
     position: absolute;
