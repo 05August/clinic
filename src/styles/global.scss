@@ -157,6 +157,13 @@ button.back-to-top {
     transform: rotate(1turn);
   }
 }
+
+.animate {
+  position: absolute;
+  user-select: none;
+  z-index: -1;
+}
+
 .animate-wave {
   animation: left-right 1.5s infinite alternate;
 }

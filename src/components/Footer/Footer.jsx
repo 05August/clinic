@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Animation from "../Animation/Animation";
 import { FaArrowUp, FaPhoneAlt } from "react-icons/fa";
 import logo from "../../assets/img/logo.png";
-import wave from "../../assets/img/wave.png";
-import updown from "../../assets/img/updown.png";
-import rotate from "../../assets/img/rotate.png";
 import { WIDGET_DATA } from "../../constants/constants";
-import { Link } from "react-router-dom";
 import "./footer.scss";
 
 const renderWidget = (data) => {
@@ -149,10 +147,34 @@ const Footer = () => {
           </p>
         </Container>
       </section>
-      <img src={wave} alt="wave-animate" className="pt-img1 animate animate-wave" />
-      <img src={updown} alt="updown-animate" className="pt-img2 animate animate-updown" />
-      <img src={rotate} alt="rotate-animate" className="pt-img3 animate animate-rotate" />
-      <img src={wave} alt="wave-animate" className="pt-img4 animate animate-wave" />
+      <Animation
+        data={{
+          url: "https://i.postimg.cc/jjFtfytV/wave.png",
+          className: "wave",
+          style: { top: 100, left: 130, zIndex: 1 },
+        }}
+      />
+      <Animation
+        data={{
+          url: "https://i.postimg.cc/cHv1kXX4/updown.png",
+          className: "updown",
+          style: { bottom: 180, left: 30 },
+        }}
+      />
+      <Animation
+        data={{
+          url: "https://i.postimg.cc/BnCvj8js/rotate.png",
+          className: "rotate",
+          style: { top: 180, right: 40 },
+        }}
+      />
+      <Animation
+        data={{
+          url: "https://i.postimg.cc/jjFtfytV/wave.png",
+          className: "wave",
+          style: { bottom: 120, right: 60 },
+        }}
+      />
 
       <button
         className="back-to-top"
