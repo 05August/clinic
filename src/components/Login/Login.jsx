@@ -30,18 +30,18 @@ const Login = () => {
             <h1>Register hire.</h1> <input type="text" placeholder="Name" />
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
-            <button>Registerggggggg</button>
+            <button onClick={() => registerButton()}>Register</button>
             <span>or use your account</span>
             <div className="social-container">
               <a href="google.vn" className="social">
                 <i class="fa-brands fa-square-facebook"></i>
               </a>
               <a href="#" className="social">
-                <i className="lni lni-google" />
+                <i class="fa-brands fa-google"></i>
               </a>
 
               <a href="#" className="social">
-                <i className="lni lni-linkedin-original" />
+                <i class="fa-brands fa-linkedin"></i>
               </a>
             </div>
           </form>
@@ -59,17 +59,17 @@ const Login = () => {
                 <a href="#">Forgot password?</a>
               </div>
             </div>
-            <button onClick={() => loginButton()}>Login1</button>
+            <button onClick={() => loginButton()}>Login</button>
             <span>or use your account</span>
             <div className="social-container">
               <a href="#" className="social">
-                <i className="lni lni-facebook-fill" />
+                <i class="fa-brands fa-square-facebook"></i>
               </a>
               <a href="#" className="social">
-                <i className="lni lni-google" />
+                <i class="fa-brands fa-google"></i>
               </a>
               <a href="#" className="social">
-                <i className="lni lni-linkedin-original" />
+                <i class="fa-brands fa-linkedin"></i>
               </a>
             </div>
           </form>
@@ -88,7 +88,7 @@ const Login = () => {
                   registerButton();
                 }}
               >
-                Logineeeee
+                Login
                 <i className="lni lni-arrow-left login" />
               </button>
             </div>

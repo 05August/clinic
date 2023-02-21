@@ -260,12 +260,18 @@ input {
   justify-content: center;
   align-items: center;
   margin: 0 5px;
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   transition: 0.3s ease-in-out;
 }
 .social-container a:hover {
   border: 1px solid #4bb6b7;
+
+  cursor: pointer;
+  border-radius: 90px;
+  background-color: white;
+  color: #0040ff;
+  transform: scale(1.2);
 }
 .red {
   background-color: red;
