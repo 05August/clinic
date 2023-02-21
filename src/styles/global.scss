@@ -69,6 +69,11 @@ body {
 .btn-primary {
   background-color: #565acf;
   border: none;
+  &:hover {
+    color: #fff;
+    background-color: #494db0;
+    border-color: #4548a6;
+  }
 }
 
 .btn-outline-primary {
@@ -174,4 +179,28 @@ button.back-to-top {
 
 .animate-rotate {
   animation: rotation 20s linear infinite;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1199px;
+  }
 }
