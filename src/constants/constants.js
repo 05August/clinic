@@ -127,3 +127,78 @@ export const NAV_DATA = [
     path: "/contact",
   },
 ];
+
+export const DEPARTMENTS = [
+  {
+    pathImg:
+      "https://ld-wp73.template-help.com/wordpress/prod_13983/v1/wp-content/uploads/2017/10/icon-img-5.png",
+    title: "Neurology",
+    decription: "Treatment perfectly match your goals.",
+  },
+  {
+    pathImg:
+      "https://ld-wp73.template-help.com/wordpress/prod_13983/v1/wp-content/uploads/2017/10/icon-img-6.png",
+    title: "Traumotology",
+    decription: "Treatment perfectly match your goals.",
+  },
+  {
+    pathImg:
+      "https://ld-wp73.template-help.com/wordpress/prod_13983/v1/wp-content/uploads/2019/10/icon-img-7.png",
+    title: "Nephrology",
+    decription: "Treatment perfectly match your goals.",
+  },
+  {
+    pathImg:
+      "https://ld-wp73.template-help.com/wordpress/prod_13983/v1/wp-content/uploads/2019/10/icon-img-8.png",
+    title: "Cardiology",
+    decription: "Treatment perfectly match your goals.",
+  },
+  {
+    pathImg:
+      "https://ld-wp73.template-help.com/wordpress/prod_13983/v1/wp-content/uploads/2019/10/icon-img-9.png",
+    title: "Pulmonary",
+    decription: "Treatment perfectly match your goals.",
+  },
+  {
+    pathImg:
+      "https://ld-wp73.template-help.com/wordpress/prod_13983/v1/wp-content/uploads/2019/10/icon-img-10.png",
+    title: "Births",
+    decription: "Treatment perfectly match your goals.",
+  },
+  {
+    pathImg:
+      "https://ld-wp73.template-help.com/wordpress/prod_13983/v1/wp-content/uploads/2019/10/icon-img-11.png",
+    title: "Gynaecology",
+    decription: "Treatment perfectly match your goals.",
+  },
+  {
+    pathImg:
+      "https://ld-wp73.template-help.com/wordpress/prod_13983/v1/wp-content/uploads/2019/10/icon-img-12.png",
+    title: "Dental",
+    decription: "Treatment perfectly match your goals.",
+  },
+  {
+    pathImg:
+      "https://ld-wp73.template-help.com/wordpress/prod_13983/v1/wp-content/uploads/2017/10/icon-img-13.png",
+    title: "X-ray",
+    decription: "Treatment perfectly match your goals.",
+  },
+  {
+    pathImg:
+      "https://ld-wp73.template-help.com/wordpress/prod_13983/v1/wp-content/uploads/2019/10/icon-img-14.png",
+    title: "Pregnancy",
+    decription: "Treatment perfectly match your goals.",
+  },
+  {
+    pathImg:
+      "https://ld-wp73.template-help.com/wordpress/prod_13983/v1/wp-content/uploads/2019/10/icon-img-15.png",
+    title: "For disabled",
+    decription: "Treatment perfectly match your goals.",
+  },
+  {
+    pathImg:
+      "https://ld-wp73.template-help.com/wordpress/prod_13983/v1/wp-content/uploads/2019/10/icon-img-16.png",
+    title: "NMR",
+    decription: "Treatment perfectly match your goals.",
+  },
+];

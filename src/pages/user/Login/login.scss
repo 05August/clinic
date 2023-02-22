@@ -1,4 +1,6 @@
 @import "../../../styles/mixin.scss";
+@import "../../../styles/variables.scss";
+
 
 .login {
   display: flex;
@@ -6,12 +8,29 @@
   align-items: center;
   flex-direction: column;
   overflow: hidden;
-  padding-top: 150px;
-  padding-bottom: 100px;
   position: relative;
   z-index: 1;
-  background: url("../../../assets/img/bgbanner.jpg") no-repeat 50%;
-  background-size: cover;
+  height: 100vh;
+
+  & > a {
+    position: absolute;
+    z-index: 999;
+    top: 15px;
+    left: 20px;
+
+    @include keyframes(blink) {
+      50% {
+        color: $primary-color;
+      }
+    }
+
+    div {
+      color: $white;
+      text-align: center;
+      padding-top: 10px;
+      animation: blink 0.7s infinite;
+    }
+  }
 
   &-container {
     display: flex;
