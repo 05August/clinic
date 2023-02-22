@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./login.scss";
-import { AiFillFacebook, AiFillGoogleCircle, AiFillLinkedin } from "react-icons/ai";
+import logo from "../../../assets/img/logo.png";
+
 import { Link } from "react-router-dom";
+import { ROUTE } from "../../../constants/constants";
 const Login = () => {
   const [isLogin, setIsLogin] = useState(false);
   const loginButton = () => {
@@ -38,7 +40,8 @@ const Login = () => {
         </div>
         <div className="form-container login-item">
           <form action="#">
-            <h1>Login hire.</h1> <input type="email" placeholder="Email" />
+            <h1>Login hire.</h1>
+            <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
             <div className="content">
               <div className="checkbox">
@@ -94,6 +97,10 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Link to={ROUTE.HOME}>
+        <img src={logo} alt="logo" />
+        <div>Back to Home</div>
+      </Link>
     </section>
   );
 };

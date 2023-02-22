@@ -28,8 +28,8 @@ function App() {
         />
         <Route path={ROUTE.HOME} element={<DefaultLayout />}>
           <Route index element={<Home />} />
-          <Route path={ROUTE.LOGIN} element={<Login />} />
         </Route>
+        <Route path={ROUTE.LOGIN} element={<Login />} />
       </Routes>
     </div>
   );
