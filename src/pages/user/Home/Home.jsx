@@ -1,10 +1,54 @@
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
+import { setLoading } from "../../../redux/global.slice";
 import Animation from "../../../components/Animation/Animation";
+import ClinicCard from "../../../components/ClinicCard/ClinicCard";
 import { DEPARTMENTS } from "../../../constants/constants";
 
 import "./home.scss";
+import clientServer from "../../../server/clientServer";
+
 const Home = () => {
+  const [hotSearchClinic, setHotSearchClinic] = useState([]);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    async function getPerData() {
+      try {
+        dispatch(setLoading(true));
+        const getResponse = await clientServer.get("clinicList?_start=0&_end=8");
+        setHotSearchClinic(getResponse.data);
+      } finally {
+        dispatch(setLoading(false));
+      }
+    }
+    getPerData();
+  }, []);
+  function customArrow({ type }) {
+    return (
+      <button type="button">
+        {type === "next" ? <AiOutlineArrowRight /> : <AiOutlineArrowLeft />}
+      </button>
+    );
+  }
+
+  const settingSlideTopSearch = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 500,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+    nextArrow: customArrow({ type: "next" }),
+    prevArrow: customArrow({ type: "prev" }),
+  };
+
   return (
     <>
       <section className="banner">
@@ -315,6 +359,23 @@ const Home = () => {
             style: { top: "25%", left: "5%" },
           }}
         />
+      </section>
+      <section className="top-search">
+        <div className="top-search-title">
+          <h2>Top Search</h2>
+        </div>
+        <div className="top-search-slide">
+          <Slider {...settingSlideTopSearch}>
+            {hotSearchClinic.length &&
+              hotSearchClinic.map((item, index) => {
+                return (
+                  <div key={`topsearch-${index}`}>
+                    <ClinicCard data={item}></ClinicCard>
+                  </div>
+                );
+              })}
+          </Slider>
+        </div>
       </section>
     </>
   );

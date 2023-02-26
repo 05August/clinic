@@ -1,0 +1,625 @@
+{
+  "clinicList": [
+    {
+      "id": 1,
+      "department": "dental",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipMu40y-PnaqwS7a-iN5XBx6QlLj6Tp9rFRsHpWN=w660-h240-k-no",
+      "name": "Nha Khoa Việt Pháp",
+      "services": [
+        "Dental check-up and cleaning.",
+        "Extractions.",
+        "Dentures and implants.",
+        "Orthodontics (braces and clear aligners).",
+        "Teeth whitening."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "459 Đ. Lê Duẩn, Chính Gián, Thanh Khê, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "02366279666"
+        },
+        {
+          "title": "Email",
+          "content": "nhakhoavietphap@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "department": "dental",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipOF20YZCeNBKTcmFXufAdYC94mpwORbf6o_Mn89=w630-h240-k-no",
+      "name": "Nha khoa Việt Đức",
+      "services": [
+        "Dental check-up and cleaning.",
+        "Extractions.",
+        "Pediatric dentistry (dental care for children).",
+        "Orthodontics (braces and clear aligners).",
+        "Teeth whitening."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "178 Hà Huy Tập, Hòa Khê, Thanh Khê, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0905826526"
+        },
+        {
+          "title": "Email",
+          "content": "nhakhoavietduc@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "department": "dental",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipPwlv97hdoqGGBlsQDJmMHtA6J9cNoXzLBg60m5=w428-h240-k-no",
+      "name": "Nha Khoa Công Thành",
+      "services": [
+        "Dental check-up and cleaning.",
+        "Extractions.",
+        "Pediatric dentistry (dental care for children).",
+        "Orthodontics (braces and clear aligners).",
+        "Teeth whitening."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "260 Đường Bế Văn Đàn, Hòa Khê, Thanh Khê, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0976771950 "
+        },
+        {
+          "title": "Email",
+          "content": "nhakhoacongthanh@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "department": "dental",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipOU47lHH2z4JlvSnWZH8I1tZDxS4REsxW7KEkcP=w408-h408-k-no",
+      "name": "Nha Khoa My Smile",
+      "services": [
+        "Dental check-up and cleaning.",
+        "Extractions.",
+        "Pediatric dentistry (dental care for children).",
+        "Orthodontics (braces and clear aligners).",
+        "Teeth whitening."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "170 Nguyễn Văn Linh, Vĩnh Trung, Thanh Khê, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0888884418"
+        },
+        {
+          "title": "Email",
+          "content": "mysmile@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "department": "deurology",
+      "img": "https://maps.gstatic.com/tactile/pane/default_geocode-2x.png",
+      "name": "Phòng Khám Thần Kinh",
+      "services": [
+        "Headache and migraine treatment.",
+        "Lumbar puncture (spinal tap).",
+        "Injections for spasticity and dystonia.",
+        "Sleep disorder evaluations.",
+        "Spinal cord stimulation and nerve blocks for chronic pain."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "609 Tôn Đức Thắng, Hoà Khánh Nam, Liên Chiểu, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0905186189"
+        },
+        {
+          "title": "Email",
+          "content": "thankinh@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "department": "deurology",
+      "img": "https://maps.gstatic.com/tactile/pane/default_geocode-2x.png",
+      "name": "Phòng Khám Chuyên Khoa Tâm Thần Kinh",
+      "services": [
+        "Headache and migraine treatment.",
+        "Lumbar puncture (spinal tap).",
+        "Injections for spasticity and dystonia.",
+        "Sleep disorder evaluations.",
+        "Spinal cord stimulation and nerve blocks for chronic pain."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "99 Hùng Vương, Hải Châu 1, Hải Châu, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0905111634"
+        },
+        {
+          "title": "Email",
+          "content": "chuyenkhoathankinh@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "department": "traumotology",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipN8dd1_Zx3dCj4HvWHdpmCJfbJtZ_5gbP13G6Z9=w408-h544-k-no",
+      "name": "Phòng Khám - Bs Đỗ Văn Thành",
+      "services": [
+        "Evaluation and treatment of acute injuries.",
+        "Back and neck pain treatment.",
+        "Rehabilitation and physical therapy for injuries and surgery recovery.",
+        "Concussion evaluation and management.",
+        "Arthroscopic surgery for diagnosis and treatment of joint problems."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "71 Ba Đình, Thạch Thang, Hải Châu, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "02362245308"
+        },
+        {
+          "title": "Email",
+          "content": "bsthanh@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "department": "traumotology",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipPnjLaK7mkI3TTBk3z8U2DPriNjWCnJyS1K4Q6M=w426-h240-k-no",
+      "name": "Phòng Khám Bác Sĩ Tuấn",
+      "services": [
+        "Evaluation and treatment of acute injuries.",
+        "Back and neck pain treatment.",
+        "Rehabilitation and physical therapy for injuries and surgery recovery.",
+        "Concussion evaluation and management.",
+        "Arthroscopic surgery for diagnosis and treatment of joint problems."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "271 Đống Đa, Thạch Thang, Hải Châu, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "02363505609"
+        },
+        {
+          "title": "Email",
+          "content": "bstuan@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "department": "traumotology",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipPnjLaK7mkI3TTBk3z8U2DPriNjWCnJyS1K4Q6M=w426-h240-k-no",
+      "name": "Phòng Khám Bác Sĩ Tuấn",
+      "services": [
+        "Evaluation and treatment of acute injuries.",
+        "Back and neck pain treatment.",
+        "Rehabilitation and physical therapy for injuries and surgery recovery.",
+        "Concussion evaluation and management.",
+        "Arthroscopic surgery for diagnosis and treatment of joint problems."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "271 Đống Đa, Thạch Thang, Hải Châu, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "02363505609"
+        },
+        {
+          "title": "Email",
+          "content": "bstuan@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "department": "traumotology",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipN8dd1_Zx3dCj4HvWHdpmCJfbJtZ_5gbP13G6Z9=w408-h544-k-no",
+      "name": "Phòng Khám Bs Đỗ Văn Thành",
+      "services": [
+        "Evaluation and treatment of acute injuries.",
+        "Back and neck pain treatment.",
+        "Rehabilitation and physical therapy for injuries and surgery recovery.",
+        "Concussion evaluation and management.",
+        "Arthroscopic surgery for diagnosis and treatment of joint problems."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "71 Ba Đình, Thạch Thang, Hải Châu, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "02362245308"
+        },
+        {
+          "title": "Email",
+          "content": "bsthanh@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "department": "nephrology",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipNgyoC5d8r3A7x3i2gl9s8JlPyUqCQw2j5Tqr00=w408-h306-k-no",
+      "name": "Phòng Khám Chuyên Khoa Thận",
+      "services": [
+        "Dialysis treatment.",
+        "Nutritional counseling for kidney disease management.",
+        "Evaluation and management of chronic kidney disease.",
+        "Treatment of acute kidney injury and electrolyte imbalances.",
+        "Treatment of polycystic kidney disease and other genetic kidney disorders."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "31 Thái Phiên, Phước Ninh, Hải Châu, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0935938668"
+        },
+        {
+          "title": "Email",
+          "content": "chuyenkhoathan@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "department": "nephrology",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipNgyoC5d8r3A7x3i2gl9s8JlPyUqCQw2j5Tqr00=w408-h306-k-no",
+      "name": "Phòng Khám Chuyên Khoa Thận",
+      "services": [
+        "Dialysis treatment.",
+        "Nutritional counseling for kidney disease management.",
+        "Evaluation and management of chronic kidney disease.",
+        "Treatment of acute kidney injury and electrolyte imbalances.",
+        "Treatment of polycystic kidney disease and other genetic kidney disorders."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "31 Thái Phiên, Phước Ninh, Hải Châu, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0935938668"
+        },
+        {
+          "title": "Email",
+          "content": "chuyenkhoathan@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "department": "cardiology",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipPtYOMxUxIUQFfYDBCkpcBGGKtic2ivAXGUce1Z=w426-h240-k-no",
+      "name": "Phòng Khám Tim Mạch Đà nẵng",
+      "services": [
+        "Evaluation and management of cardiovascular diseases.",
+        "Diagnostic tests.",
+        "Treatment of hypertension and high cholesterol",
+        "Management of heart failure.",
+        "Treatment of arrhythmias."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "108 Hải Phòng, Thạch Thang, Hải Châu, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0914083484"
+        },
+        {
+          "title": "Email",
+          "content": "chuyenkhoatimmach@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "department": "cardiology",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipPtYOMxUxIUQFfYDBCkpcBGGKtic2ivAXGUce1Z=w426-h240-k-no",
+      "name": "Phòng Khám Tim Mạch Đà nẵng",
+      "services": [
+        "Evaluation and management of cardiovascular diseases.",
+        "Diagnostic tests.",
+        "Treatment of hypertension and high cholesterol",
+        "Management of heart failure.",
+        "Treatment of arrhythmias."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "108 Hải Phòng, Thạch Thang, Hải Châu, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0914083484"
+        },
+        {
+          "title": "Email",
+          "content": "chuyenkhoatimmach@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "department": "cardiology",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipPtYOMxUxIUQFfYDBCkpcBGGKtic2ivAXGUce1Z=w426-h240-k-no",
+      "name": "Phòng Khám Tim Mạch Đà nẵng",
+      "services": [
+        "Evaluation and management of cardiovascular diseases.",
+        "Diagnostic tests.",
+        "Treatment of hypertension and high cholesterol",
+        "Management of heart failure.",
+        "Treatment of arrhythmias."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "108 Hải Phòng, Thạch Thang, Hải Châu, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0914083484"
+        },
+        {
+          "title": "Email",
+          "content": "chuyenkhoatimmach@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "department": "pulmonary",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipMv00xZ3KDVatk4AmBWn0dvrbD7TG2nFz0TmGj7=w519-h240-k-no",
+      "name": "Phòng Khám Bệnh Phổi và Hô Hấp",
+      "services": [
+        "Evaluation and management of respiratory diseases.",
+        "Pulmonary function tests.",
+        "Imaging tests.",
+        "Bronchoscopy.",
+        "Treatment of respiratory infections and management of chronic respiratory conditions."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "202 Nguyễn Phước Nguyên, Hòa Khê, Thanh Khê, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0929513133"
+        },
+        {
+          "title": "Email",
+          "content": "chuyenkhoaphoi@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "department": "pulmonary",
+      "img": "https://maps.gstatic.com/tactile/pane/default_geocode-2x.png",
+      "name": "Phòng Khám Hô Hấp - Bs Chung",
+      "services": [
+        "Evaluation and management of respiratory diseases.",
+        "Pulmonary function tests.",
+        "Imaging tests.",
+        "Bronchoscopy.",
+        "Treatment of respiratory infections and management of chronic respiratory conditions."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "99 Nguyễn Chí Thanh, Thạch Thang, Hải Châu, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0903578049"
+        },
+        {
+          "title": "Email",
+          "content": "chuyenkhoaphoi1@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "department": "births",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipNmXBQkZte64MtxB0tosRPIH9FhvlErV3KwbBhQ=w426-h240-k-no",
+      "name": "Phòng Khám Phụ Sản BS Anh Thư",
+      "services": [
+        "Prenatal care.",
+        "Nutritional counseling.",
+        "Screening and management of pregnancy complications.",
+        "Management of labor and delivery.",
+        "Postpartum care."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "33 Cao Thắng, Thanh Bình, Hải Châu, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0913430545"
+        },
+        {
+          "title": "Email",
+          "content": "chuyenkhoaphusan@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "department": "births",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipNmXBQkZte64MtxB0tosRPIH9FhvlErV3KwbBhQ=w426-h240-k-no",
+      "name": "Phòng Khám Phụ Sản BS Anh Thư",
+      "services": [
+        "Prenatal care.",
+        "Nutritional counseling.",
+        "Screening and management of pregnancy complications.",
+        "Management of labor and delivery.",
+        "Postpartum care."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "33 Cao Thắng, Thanh Bình, Hải Châu, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0913430545"
+        },
+        {
+          "title": "Email",
+          "content": "chuyenkhoaphusan@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "department": "gynaecology",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipPHz9jni5RS51wh2VjKNJv5ym3duR9B2TfCOhjJ=w426-h240-k-no",
+      "name": "Phòng Khám Sản Phụ Khoa",
+      "services": [
+        "General gynecological check-up.",
+        "PAP test/screening.",
+        "Gynecological ultrasound.",
+        "Treatment of gynecological disorders.",
+        "Support for gynecological products."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "05 Tôn Thất Đạm, Xuân Hà, Thanh Khê, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0903573001"
+        },
+        {
+          "title": "Email",
+          "content": "chuyenkhoaphukhoa@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "department": "gynaecology",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipPHz9jni5RS51wh2VjKNJv5ym3duR9B2TfCOhjJ=w426-h240-k-no",
+      "name": "Phòng Khám Sản Phụ Khoa",
+      "services": [
+        "General gynecological check-up.",
+        "PAP test/screening.",
+        "Gynecological ultrasound.",
+        "Treatment of gynecological disorders.",
+        "Support for gynecological products."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "05 Tôn Thất Đạm, Xuân Hà, Thanh Khê, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0903573001"
+        },
+        {
+          "title": "Email",
+          "content": "chuyenkhoaphukhoa@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "department": "pregnancy",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipO2jQpSzZ2D_uquvePg5xiPljd6wCduI7ZW6P8e=w408-h306-k-no",
+      "name": "Phòng Khám - Bs Quỳnh Mai",
+      "services": [
+        "Prenatal care.",
+        "Nutritional counseling.",
+        "Screening and management of pregnancy complications.",
+        "Management of labor and delivery.",
+        "Postpartum care."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "8 Đào Duy Anh, Thạc Gián, Thanh Khê, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0963243339"
+        },
+        {
+          "title": "Email",
+          "content": "chuyenkhoaphusanquynhmai@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "department": "pregnancy",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipNmXBQkZte64MtxB0tosRPIH9FhvlErV3KwbBhQ=w426-h240-k-no",
+      "name": "Phòng Khám Phụ Sản BS Anh Thư",
+      "services": [
+        "Prenatal care.",
+        "Nutritional counseling.",
+        "Screening and management of pregnancy complications.",
+        "Management of labor and delivery.",
+        "Postpartum care."
+      ],
+      "contact": [
+        {
+          "title": "Address",
+          "content": "33 Cao Thắng, Thanh Bình, Hải Châu, Đà Nẵng, Việt Nam"
+        },
+        {
+          "title": "Hotline",
+          "content": "0913430545"
+        },
+        {
+          "title": "Email",
+          "content": "chuyenkhoaphusan@gmail.com"
+        }
+      ]
+    }
+  ]
+}
