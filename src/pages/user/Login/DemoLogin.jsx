@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import logo from "../../../assets/img/logo.png";
 import { ROUTE } from "../../../constants/constants";
 import "./login.scss";
-const Login = () => {
+const DemoLogin = () => {
   const [emailLogin, setEmailLogin] = useState("");
   const [passwordLogin, setPasswordLogin] = useState("");
   const [database, setDatabase] = useState([]);
@@ -27,6 +27,7 @@ const Login = () => {
     onSubmit: async (values, { resetForm }) => {
       console.log("values:", values);
       window.alert("Form submitted");
+      setIsRegister(true);
       resetForm();
       try {
         ///////////////day code len api
@@ -57,7 +58,7 @@ const Login = () => {
         .required("Required")
         .matches(
           /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
-          "Regex for password must contain at least eight characters,one number , one special characters"
+          "Regex for password must contain ... Ex:Toan123!"
         ),
 
       confirmPassword: Yup.string()
@@ -76,13 +77,12 @@ const Login = () => {
       } catch (error) {}
     };
     getTodos();
-  }, [database]);
+  }, []);
+  console.log("database[0]:", database[0]);
   ///////////////////////////////////logic login
   const handleLogin = (e) => {
     e.preventDefault();
     const userData = database.find((user) => {
-      console.log("user:", user);
-      console.log("2:", 2);
       return user.username === emailLogin;
     });
     if (userData) {
@@ -159,7 +159,7 @@ const Login = () => {
                   type="password"
                   id="confirmPassword"
                   name="confirmPassword"
-                  placeholder="confirm password"
+                  placeholder="Confirm password"
                   value={formik.values.confirmPassword}
                   onChange={formik.handleChange}
                 />
@@ -187,6 +187,7 @@ const Login = () => {
               <form action="#">
                 <h1>Login hire.</h1>
                 <input
+                  // value={isRegister ? "false" : "true"}
                   type="text"
                   name="uname"
                   placeholder="Email"
@@ -196,8 +197,9 @@ const Login = () => {
                 {renderErrorMessage("uname")}
 
                 <input
+                  // value={isRegister ? "false" : "true"}
                   name="pass"
-                  type="text"
+                  type="password"
                   placeholder="Password"
                   required
                   onChange={(e) => setPasswordLogin(e.target.value)}
@@ -276,4 +278,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default DemoLogin;
