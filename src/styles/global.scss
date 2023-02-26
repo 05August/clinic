@@ -112,6 +112,19 @@ button.back-to-top {
   justify-content: center;
 }
 
+button.slick-arrow {
+  color: #fff;
+  background-color: #565acf;
+  border-radius: 8px;
+  border-color: #565acf;
+  width: 45px;
+  height: 45px;
+  font-size: 16px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
 .bg-title {
   background: url("../assets/img/bg_title.png") repeat 50%;
 }

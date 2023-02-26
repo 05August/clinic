@@ -384,6 +384,64 @@
   }
 }
 
+.top-search {
+  padding-top: 100px;
+  padding-bottom: 70px;
+
+  &-title {
+    padding-bottom: 20px;
+    text-align: center;
+
+    h2 {
+      background: url("../../../assets/img/bg_title_2.png") repeat 50%;
+      display: inline-block;
+      font-weight: 700;
+      padding: 3px 15px;
+      margin-bottom: 15px;
+      color: #f17732;
+    }
+  }
+
+  &-slide {
+    .slick-slider {
+      position: relative;
+
+      .slick-prev {
+        top: 50%;
+        left: 75px;
+      }
+
+      .slick-next {
+        top: 50%;
+        right: 75px;
+      }
+
+      .slick-arrow {
+        position: absolute;
+        @include transition-ease-in-out(0.4s);
+
+        &:hover {
+          svg {
+            transform: scale(1.5);
+            @include transition-ease-in-out(0.4s);
+          }
+        }
+      }
+
+      .slick-list {
+        width: 80%;
+        overflow: hidden;
+        margin: 0 auto;
+        padding-left: 25px;
+
+        .slick-track {
+          display: flex;
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 1680px) {
   .banner {
     height: 800px;

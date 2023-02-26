@@ -25,7 +25,7 @@ const BreadcrumbPage = () => {
       style={{ display: location !== "/" ? "block" : "none" }}
     >
       <Container className="breadcrumb-container">
-        <h1>{capitalizedStr(breadcrumbItem[breadcrumbItem.length - 1])}</h1>
+        {/* <h1>{capitalizedStr(breadcrumbItem[breadcrumbItem.length - 1])}</h1> */}
         <ul>
           {breadcrumbItem.map((item, index) => {
             hrefBreadcrumb += item;

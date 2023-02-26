@@ -6,7 +6,7 @@ section.breadcrumb {
   background-size: cover;
   position: relative;
   overflow: hidden;
-  height: 420px;
+  height: 300px;
   width: 100%;
   z-index: 1;
   background: url("https://meditro.themetrades.com/react/static/media/img1.815eb17a.jpg")
@@ -29,16 +29,16 @@ section.breadcrumb {
   .breadcrumb-container {
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
+    justify-content: center;
 
     h1 {
       font-weight: 700;
-      font-size: 72px;
-      margin-bottom: 20px;
+      font-size: 65px;
       color: #1f2278;
       text-transform: capitalize;
+      text-align: center;
     }
 
     ul {

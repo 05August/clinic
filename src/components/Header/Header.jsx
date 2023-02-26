@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams, Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/img/logo.png";
 import { ROUTE, NAV_DATA } from "../../constants/constants";
 import { HiPlusSm, HiOutlineSearch } from "react-icons/hi";
@@ -9,7 +9,6 @@ const Header = () => {
   const [offset, setOffset] = useState(0);
   const [searchValue, setSearchValue] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
-
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset);
     window.removeEventListener("scroll", onScroll);
@@ -17,11 +16,19 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const navigate = useNavigate();
+
   return (
     <header className={offset > 50 ? "is-fixed header" : "header"}>
       <div className="header-left">
         <div className="logo">
-          <Link to={ROUTE.HOME}>
+          <Link
+            onClick={() => {
+              setSearchValue("");
+              window.scrollTo(0, 0);
+            }}
+            to={ROUTE.HOME}
+          >
             <img src={logo} alt="logo" />
           </Link>
         </div>
@@ -34,6 +41,8 @@ const Header = () => {
               e.preventDefault();
               searchParams.set("keyword", searchValue.trim().toLowerCase());
               setSearchParams(searchParams);
+              console.log(searchParams.get("keyword" || ""));
+              navigate(ROUTE.CLINIC);
             }}
           >
             <input
@@ -54,7 +63,13 @@ const Header = () => {
             {NAV_DATA.map((item, index) => {
               return (
                 <li className="nav-item" key={`${index}-${item.path}`}>
-                  <Link to={item.path}>
+                  <Link
+                    onClick={() => {
+                      setSearchValue("");
+                      item.path === "/" && window.scrollTo(0, 0);
+                    }}
+                    to={item.path}
+                  >
                     {item.title} {item.dropData ? <HiPlusSm /> : <></>}
                   </Link>
                   {item.dropData ? (
