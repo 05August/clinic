@@ -134,7 +134,7 @@
             z-index: 10;
             margin-top: 20px;
             box-shadow: 0 1px 40px 0 rgb(0 0 0 / 10%);
-            @include transition-ease-in-out(0.8s);
+            @include transition-ease-in-out(0.4s);
             & > li {
               padding: 0 25px;
               & > a {

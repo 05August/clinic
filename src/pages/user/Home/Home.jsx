@@ -7,7 +7,7 @@ import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import { setLoading } from "../../../redux/global.slice";
 import Animation from "../../../components/Animation/Animation";
 import ClinicCard from "../../../components/ClinicCard/ClinicCard";
-import { DEPARTMENTS } from "../../../constants/constants";
+import { DEPARTMENTS, ROUTE } from "../../../constants/constants";
 
 import "./home.scss";
 import clientServer from "../../../server/clientServer";
@@ -314,13 +314,23 @@ const Home = () => {
                     className="department-item"
                   >
                     <div className="department-img">
-                      <Link to="/">
+                      <Link
+                        to={`${ROUTE.CLINIC}/${item.title
+                          .toLowerCase()
+                          .replace(/[^a-z0-9\-]/g, "-")}`}
+                      >
                         <img src={item.pathImg} alt="department" />
                       </Link>
                     </div>
                     <div className="department-content">
                       <div className="title">
-                        <Link to="/">{item.title}</Link>
+                        <Link
+                          to={`${ROUTE.CLINIC}/${item.title
+                            .toLowerCase()
+                            .replace(/[^a-z0-9\-]/g, "-")}`}
+                        >
+                          {item.title}
+                        </Link>
                       </div>
                       <div className="decription">{item.decription}</div>
                     </div>
@@ -376,6 +386,34 @@ const Home = () => {
               })}
           </Slider>
         </div>
+        <Animation
+          data={{
+            url: "https://i.postimg.cc/BvtmjKm1/circle3.png",
+            className: "updown",
+            style: { top: "5%", right: "5%" },
+          }}
+        />
+        <Animation
+          data={{
+            url: "https://i.postimg.cc/JnHm5tzs/wave2.png",
+            className: "wave",
+            style: { top: "8%", left: "5%" },
+          }}
+        />
+        <Animation
+          data={{
+            url: "https://i.postimg.cc/wvdDM3yN/rotate3.png",
+            className: "rotate",
+            style: { bottom: "5%", right: "5%" },
+          }}
+        />
+        <Animation
+          data={{
+            url: "https://i.postimg.cc/JnHm5tzs/wave2.png",
+            className: "wave",
+            style: { bottom: "5%", right: "50%" },
+          }}
+        />
       </section>
     </>
   );
