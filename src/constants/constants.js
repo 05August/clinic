@@ -68,6 +68,10 @@ export const NAV_DATA = [
     path: "/",
   },
   {
+    title: "Clinic",
+    path: "/clinic",
+  },
+  {
     title: "Pages",
     path: "/",
     dropData: [
