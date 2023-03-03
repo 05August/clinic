@@ -1,0 +1,51 @@
+$white: #ffffff;
+$black: #000;
+$gray: #e6e6e6;
+$light-gray: #f7f7f7;
+$light-black: #313131;
+$dark-gray: #969696;
+$blue: #1b95e0;
+$green: #3fb871;
+$dark-green: #36a66d;
+
+$light-green: #98cb4a;
+$orange: #ec7429;
+$red: #c30100;
+$light-red: #ef3e45;
+$beige: #f3daae;
+$yellow: yellow;
+$primary-color: #565acf;
+$secondary-color: #f17732;
+$red-orange: #f76d3c;
+$purple: #913ccd;
+$pink: #f15f74;
+
+$border-color: #dee2e6;
+$bgc: #fbf9f9;
+$fontsize-xl: calc(1vw + 2rem);
+$fontsize-lg: calc(1vw + 1rem);
+$fontsize-md: calc(0.2vw + 1rem);
+$fontsize-sm: calc(0.1vw + 0.9rem);
+
+$responsive-padding: calc(1vh + 0.5rem);
+
+$primary-font-family: "Poppins", sans-serif;
+$secondary-font-family: "Dancing Script", sans-serif;
+
+$breakpoints: (
+  "xl": (
+    max-width: 1200px,
+  ),
+  "lg": (
+    max-width: 992px,
+  ),
+  "md": (
+    max-width: 768px,
+  ),
+  "sm": (
+    max-width: 576px,
+  ),
+  "xs": (
+    max-width: 400px,
+  ),
+);

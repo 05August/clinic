@@ -1,5 +1,18 @@
 @import "~bootstrap/scss/bootstrap";
-@import "./reset";
-@import "./variables";
-@import "./mixin";
-@import "./global";
+@import "rule/global";
+@import "rule/variables";
+@import "rule/mixin";
+@import "rule/reset";
+@import "common/blogItem";
+@import "common/clinicCard";
+@import "common/doctorInfo";
+@import "shared/loading";
+@import "layout/breadcrumb";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/home";
+@import "layout/login";
+@import "layout/detailClinic";
+
+
+

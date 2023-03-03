@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import clinicListReducer from "./clinicList.slice.js";
-import loadingReducer from "./global.slice.js";
+import globalReducer from "./global.slice.js";
 
 const store = configureStore({
   reducer: {
     clinicList: clinicListReducer,
-    loadingSlice: loadingReducer,
+    globalSlice: globalReducer,
   },
 });
 export default store;

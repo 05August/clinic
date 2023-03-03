@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
-import Loading from "../components/Loading/Loading";
+import Header from "components/Layout/Header";
+import Footer from "components/Layout/Footer";
+import Loading from "components/Shared/Loading";
 import { Outlet } from "react-router-dom";
-import BreadcrumbPage from "../components/Breadcrumb/Breadcrumb";
+import BreadcrumbPage from "components/Layout/Breadcrumb";
 
 function DefaultLayout() {
   return (

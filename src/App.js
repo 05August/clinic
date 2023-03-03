@@ -1,11 +1,14 @@
 import { Empty } from "antd";
 import { Routes, Route, Link } from "react-router-dom";
-import { ROUTE } from "./constants/constants";
-import DefaultLayout from "./layouts/DefaultLayout";
-import Home from "./pages/user/Home/Home";
-import Login from "./pages/user/Login/Login";
-import ScrollToTop from "./until/ScrollToTop";
-import "./styles/style.scss";
+import { ROUTE } from "constants/constantsGlobal";
+
+import ScrollToTop from "components/Shared/ScrollToTop";
+import DefaultLayout from "layouts/DefaultLayout";
+import Home from "pages/user/Home";
+import DetailClinic from "pages/user/DetailClinic";
+import Login from "pages/user/Login";
+
+import "styles/style.scss";
 function App() {
   return (
     <div className="App">
@@ -41,16 +44,7 @@ function App() {
               </div>
             }
           />
-          <Route
-            path={ROUTE.CLINIC_DETAIL}
-            element={
-              <div
-                style={{ textAlign: "center", padding: "100px 0px", fontSize: "50px" }}
-              >
-                <h1>Clinic Detail Coming Soon...</h1>
-              </div>
-            }
-          />
+          <Route path={ROUTE.CLINIC_DETAIL} element={<DetailClinic />} />
         </Route>
         <Route path={ROUTE.LOGIN} element={<Login />} />
       </Routes>
