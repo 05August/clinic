@@ -1,0 +1,79 @@
+@import "../rule/mixin.scss";
+@import "../rule/variables.scss";
+
+section.breadcrumb {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+  width: 100%;
+  z-index: 1;
+  background: url("https://meditro.themetrades.com/react/static/media/img1.815eb17a.jpg")
+    no-repeat;
+  background-size: cover;
+  padding-top: 120px;
+
+  &:after {
+    content: "";
+    background: url("../../assets/img/bg-breadcrumb.png") no-repeat bottom;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    z-index: -1;
+  }
+
+  .breadcrumb-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    h1 {
+      font-weight: 700;
+      font-size: 65px;
+      color: #1f2278;
+      text-transform: capitalize;
+      text-align: center;
+    }
+
+    ul {
+      box-shadow: 0 5px 30px 0 rgb(86 90 207 / 30%);
+      background-color: $primary-color;
+      padding: 12px 30px !important;
+      border-radius: 10px;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+
+      .breadcrumb-item {
+        padding: 0;
+        display: inline-flex;
+        font-size: 16px;
+        font-weight: 500;
+        align-items: center;
+        color: $white;
+
+        &::before {
+          color: $white;
+          padding-left: 8px;
+        }
+
+        a {
+          display: flex;
+          align-items: center;
+
+          svg {
+            margin-right: 5px;
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  }
+}

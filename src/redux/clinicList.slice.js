@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import clientServer from "../server/clientServer";
+import clientServer from "server/clientServer";
 
 export const getClinicList = createAsyncThunk("getClinicList", async () => {
   try {
