@@ -1,7 +1,6 @@
 @import "../rule/mixin.scss";
 @import "../rule/variables.scss";
 
-
 .login {
   display: flex;
   justify-content: center;
@@ -339,4 +338,9 @@
       outline: none;
     }
   }
+}
+.error {
+  color: red;
+  font-size: 13px;
+  text-transform: uppercase;
 }
