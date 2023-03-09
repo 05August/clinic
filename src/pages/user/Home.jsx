@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import { setLoading } from "redux/global.slice";
-import Animation from "components/Shared/Animation";
 import ClinicCard from "components/Common/ClinicCard";
 import { ROUTE } from "constants/constantsGlobal";
 import { DEPARTMENTS, ICON_ANIMATION_DATA } from "constants/constantsHomePage";
