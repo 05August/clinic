@@ -1,11 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Tabs } from "antd";
 import { ROUTE } from "constants/constantsGlobal";
+import { localStorageUlti } from "functions/localStorage";
 
 const convertPunycodeUrl = (str) => encodeURI(str.split(" ").join("-"));
 
-function ClinicCard({ data }) {
+const ClinicCard = ({ data }) => {
+  const navigate = useNavigate();
   const items = [
     {
       key: "1",
@@ -31,31 +33,34 @@ function ClinicCard({ data }) {
     },
   ];
 
+  const [imgSrc, setImgSrc] = React.useState(data.img);
+  const onError = () => {
+    setImgSrc("assets/img/default-clinic.png");
+  };
+
+  const handleNavigateDetail = () => {
+    localStorageUlti("currentIdClinic").set(data.id);
+    navigate(`${ROUTE.CLINIC}/${convertPunycodeUrl(data.name)}`);
+  };
+
   return (
     <div className="card-clinic">
       <div className="card-img">
-        <Link to={`${ROUTE.CLINIC}/${convertPunycodeUrl(data.name)}`}>
-          <img
-            src={data.img}
-            alt="Profile img"
-            className="profile-pic"
-            onError={() => {
-              this.src = "assets/img/default-clinic.png";
-            }}
-          />
-        </Link>
+        <div className="cs-pointer" onClick={handleNavigateDetail}>
+          <img src={imgSrc} alt="Profile img" className="profile-pic" onError={onError} />
+        </div>
       </div>
-      <Link to={`${ROUTE.CLINIC}/${convertPunycodeUrl(data.name)}`}>
+      <div className="cs-pointer" onClick={handleNavigateDetail}>
         <h2 className="card-title bg-title">{data.name}</h2>
-      </Link>
+      </div>
       <div className="content-card">
         <Tabs defaultActiveKey="1" items={items} />
       </div>
       <button className="btn btn-primary shadow">
-        <Link to={`${ROUTE.CLINIC}/${convertPunycodeUrl(data.name)}`}>View More</Link>
+        <div onClick={handleNavigateDetail}>View More</div>
       </button>
     </div>
   );
-}
+};
 
 export default ClinicCard;

@@ -4,6 +4,17 @@
       "id": 1,
       "department": "dental",
       "img": "https://lh5.googleusercontent.com/p/AF1QipMu40y-PnaqwS7a-iN5XBx6QlLj6Tp9rFRsHpWN=w660-h240-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Nha Khoa Việt Pháp",
       "services": [
         "Dental check-up and cleaning.",
@@ -31,6 +42,17 @@
       "id": 2,
       "department": "dental",
       "img": "https://lh5.googleusercontent.com/p/AF1QipOF20YZCeNBKTcmFXufAdYC94mpwORbf6o_Mn89=w630-h240-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Nha Khoa Việt Đức",
       "services": [
         "Dental check-up and cleaning.",
@@ -58,6 +80,17 @@
       "id": 3,
       "department": "dental",
       "img": "https://lh5.googleusercontent.com/p/AF1QipPwlv97hdoqGGBlsQDJmMHtA6J9cNoXzLBg60m5=w428-h240-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Nha Khoa Công Thành",
       "services": [
         "Dental check-up and cleaning.",
@@ -85,6 +118,17 @@
       "id": 4,
       "department": "dental",
       "img": "https://lh5.googleusercontent.com/p/AF1QipOU47lHH2z4JlvSnWZH8I1tZDxS4REsxW7KEkcP=w408-h408-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Nha Khoa My Smile",
       "services": [
         "Dental check-up and cleaning.",
@@ -112,6 +156,17 @@
       "id": 5,
       "department": "deurology",
       "img": "https://maps.gstatic.com/tactile/pane/default_geocode-2x.png",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Thần Kinh",
       "services": [
         "Headache and migraine treatment.",
@@ -139,6 +194,17 @@
       "id": 6,
       "department": "deurology",
       "img": "https://maps.gstatic.com/tactile/pane/default_geocode-2x.png",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Chuyên Khoa Tâm Thần Kinh",
       "services": [
         "Headache and migraine treatment.",
@@ -166,6 +232,17 @@
       "id": 7,
       "department": "traumotology",
       "img": "https://lh5.googleusercontent.com/p/AF1QipN8dd1_Zx3dCj4HvWHdpmCJfbJtZ_5gbP13G6Z9=w408-h544-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Bs Đỗ Văn Thành",
       "services": [
         "Evaluation and treatment of acute injuries.",
@@ -193,6 +270,17 @@
       "id": 8,
       "department": "traumotology",
       "img": "https://lh5.googleusercontent.com/p/AF1QipPnjLaK7mkI3TTBk3z8U2DPriNjWCnJyS1K4Q6M=w426-h240-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Bác Sĩ Tuấn",
       "services": [
         "Evaluation and treatment of acute injuries.",
@@ -220,6 +308,17 @@
       "id": 9,
       "department": "traumotology",
       "img": "https://lh5.googleusercontent.com/p/AF1QipPnjLaK7mkI3TTBk3z8U2DPriNjWCnJyS1K4Q6M=w426-h240-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Bác Sĩ Tuấn",
       "services": [
         "Evaluation and treatment of acute injuries.",
@@ -247,6 +346,17 @@
       "id": 10,
       "department": "traumotology",
       "img": "https://lh5.googleusercontent.com/p/AF1QipN8dd1_Zx3dCj4HvWHdpmCJfbJtZ_5gbP13G6Z9=w408-h544-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Bs Đỗ Văn Thành",
       "services": [
         "Evaluation and treatment of acute injuries.",
@@ -274,6 +384,17 @@
       "id": 11,
       "department": "nephrology",
       "img": "https://lh5.googleusercontent.com/p/AF1QipNgyoC5d8r3A7x3i2gl9s8JlPyUqCQw2j5Tqr00=w408-h306-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Chuyên Khoa Thận",
       "services": [
         "Dialysis treatment.",
@@ -301,6 +422,17 @@
       "id": 12,
       "department": "nephrology",
       "img": "https://lh5.googleusercontent.com/p/AF1QipNgyoC5d8r3A7x3i2gl9s8JlPyUqCQw2j5Tqr00=w408-h306-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Chuyên Khoa Thận",
       "services": [
         "Dialysis treatment.",
@@ -328,6 +460,17 @@
       "id": 13,
       "department": "cardiology",
       "img": "https://lh5.googleusercontent.com/p/AF1QipPtYOMxUxIUQFfYDBCkpcBGGKtic2ivAXGUce1Z=w426-h240-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Tim Mạch Đà nẵng",
       "services": [
         "Evaluation and management of cardiovascular diseases.",
@@ -355,6 +498,17 @@
       "id": 14,
       "department": "cardiology",
       "img": "https://lh5.googleusercontent.com/p/AF1QipPtYOMxUxIUQFfYDBCkpcBGGKtic2ivAXGUce1Z=w426-h240-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Tim Mạch Đà nẵng",
       "services": [
         "Evaluation and management of cardiovascular diseases.",
@@ -382,6 +536,17 @@
       "id": 15,
       "department": "cardiology",
       "img": "https://lh5.googleusercontent.com/p/AF1QipPtYOMxUxIUQFfYDBCkpcBGGKtic2ivAXGUce1Z=w426-h240-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Tim Mạch Đà nẵng",
       "services": [
         "Evaluation and management of cardiovascular diseases.",
@@ -409,6 +574,17 @@
       "id": 16,
       "department": "pulmonary",
       "img": "https://lh5.googleusercontent.com/p/AF1QipMv00xZ3KDVatk4AmBWn0dvrbD7TG2nFz0TmGj7=w519-h240-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Bệnh Phổi và Hô Hấp",
       "services": [
         "Evaluation and management of respiratory diseases.",
@@ -436,6 +612,17 @@
       "id": 17,
       "department": "pulmonary",
       "img": "https://maps.gstatic.com/tactile/pane/default_geocode-2x.png",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Hô Hấp - Bs Chung",
       "services": [
         "Evaluation and management of respiratory diseases.",
@@ -463,6 +650,17 @@
       "id": 18,
       "department": "births",
       "img": "https://lh5.googleusercontent.com/p/AF1QipNmXBQkZte64MtxB0tosRPIH9FhvlErV3KwbBhQ=w426-h240-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Phụ Sản BS Anh Thư",
       "services": [
         "Prenatal care.",
@@ -490,6 +688,17 @@
       "id": 19,
       "department": "births",
       "img": "https://lh5.googleusercontent.com/p/AF1QipNmXBQkZte64MtxB0tosRPIH9FhvlErV3KwbBhQ=w426-h240-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Phụ Sản BS Anh Thư",
       "services": [
         "Prenatal care.",
@@ -517,6 +726,17 @@
       "id": 20,
       "department": "gynaecology",
       "img": "https://lh5.googleusercontent.com/p/AF1QipPHz9jni5RS51wh2VjKNJv5ym3duR9B2TfCOhjJ=w426-h240-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Sản Phụ Khoa",
       "services": [
         "General gynecological check-up.",
@@ -544,6 +764,17 @@
       "id": 21,
       "department": "gynaecology",
       "img": "https://lh5.googleusercontent.com/p/AF1QipPHz9jni5RS51wh2VjKNJv5ym3duR9B2TfCOhjJ=w426-h240-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Sản Phụ Khoa",
       "services": [
         "General gynecological check-up.",
@@ -571,6 +802,17 @@
       "id": 22,
       "department": "pregnancy",
       "img": "https://lh5.googleusercontent.com/p/AF1QipO2jQpSzZ2D_uquvePg5xiPljd6wCduI7ZW6P8e=w408-h306-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám - Bs Quỳnh Mai",
       "services": [
         "Prenatal care.",
@@ -598,6 +840,17 @@
       "id": 23,
       "department": "pregnancy",
       "img": "https://lh5.googleusercontent.com/p/AF1QipNmXBQkZte64MtxB0tosRPIH9FhvlErV3KwbBhQ=w426-h240-k-no",
+      "timeOptions": [
+        "7:30 - 8:30",
+        "8:30 - 9:30",
+        "9:30 - 10:30",
+        "10:30 - 11:30",
+        "13:30 - 14:30",
+        "14:30 - 15:30",
+        "15:30 - 16:30",
+        "16:30 - 17:30"
+      ],
+      "decription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi consectetur adipiscing elit incididunt labore dolore magna.",
       "name": "Phòng Khám Phụ Sản BS Anh Thư",
       "services": [
         "Prenatal care.",
@@ -618,6 +871,49 @@
         {
           "title": "Email",
           "content": "chuyenkhoaphusan@gmail.com"
+        }
+      ]
+    }
+  ],
+  "doctorList": [
+    {
+      "clinicId": 1,
+      "doctors": [
+        {
+          "doctorId": 1,
+          "img": "https://meditro.themetrades.com/react/static/media/member1.22ac1d59.jpg",
+          "name": "Dr. Addition Smith",
+          "specialized": "Dentist",
+          "twitter": "https://twitter.com",
+          "linkedin": "https://www.linkedin.com",
+          "instagram": "https://instagram.com"
+        },
+        {
+          "doctorId": 2,
+          "img": "https://meditro.themetrades.com/react/static/media/member2.d03a0686.jpg",
+          "name": "Dr. Mahfuz Riad",
+          "specialized": "Chiropractor",
+          "twitter": "https://twitter.com",
+          "linkedin": "https://www.linkedin.com",
+          "instagram": "https://instagram.com"
+        },
+        {
+          "doctorId": 3,
+          "img": "https://meditro.themetrades.com/react/static/media/member3.0d822ecc.jpg",
+          "name": "Dr. David Benjamin",
+          "specialized": "Cardiologist",
+          "twitter": "https://twitter.com",
+          "linkedin": "https://www.linkedin.com",
+          "instagram": "https://instagram.com"
+        },
+        {
+          "doctorId": 4,
+          "img": "https://meditro.themetrades.com/react/static/media/member3.0d822ecc.jpg",
+          "name": "Dr. Thuận Đẹp Chai",
+          "specialized": "Cardiologist",
+          "twitter": "https://twitter.com",
+          "linkedin": "https://www.linkedin.com",
+          "instagram": "https://instagram.com"
         }
       ]
     }

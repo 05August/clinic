@@ -1,7 +1,8 @@
 import { Container } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import { HiOutlineHome } from "react-icons/hi";
-import Animation from "components/Shared/Animation";
+import { renderAnimationIcon } from "utils/renderAnimationIcon";
+import { ICON_ANIMATION_DATA } from "constants/constantsBreadcrumb";
 
 const BreadcrumbPage = () => {
   const location = useLocation().pathname;
@@ -47,29 +48,7 @@ const BreadcrumbPage = () => {
           })}
         </ul>
       </Container>
-      <Animation
-        data={{
-          url: "https://i.postimg.cc/cHv1kXX4/updown.png",
-          className: "updown",
-          style: { top: 220, left: 30 },
-        }}
-      />
-
-      <Animation
-        data={{
-          url: "https://i.postimg.cc/jjFtfytV/wave.png",
-          className: "wave",
-          style: { bottom: 50, left: "20%", zIndex: 1 },
-        }}
-      />
-
-      <Animation
-        data={{
-          url: "https://i.postimg.cc/BnCvj8js/rotate.png",
-          className: "rotate",
-          style: { bottom: "30%", right: "8%" },
-        }}
-      />
+      {renderAnimationIcon(ICON_ANIMATION_DATA)}
     </section>
   );
 };

@@ -142,6 +142,10 @@ button.slick-arrow {
   }
 }
 
+.cs-pointer {
+  cursor: pointer;
+}
+
 @include keyframes(left-right) {
   0% {
     transform: translateX(0);
