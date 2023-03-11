@@ -16,7 +16,7 @@ function TimeSlotRadioGroup({ options, handeleGetTimeValue }) {
   return (
     <div>
       {options.map((value, index) => (
-        <div key={value}>
+        <div key={value} className="time-slot-item">
           <input
             type="checkbox"
             name="timeSlot"
