@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { useDispatch } from "react-redux";
-import { Select } from "antd";
+import { Select, Tooltip, Typography } from "antd";
 import { Container, Row, Col } from "react-bootstrap";
 import { BsCheck } from "react-icons/bs";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
@@ -14,6 +14,7 @@ import clientServer from "server/clientServer";
 import { localStorageUlti } from "functions/localStorage";
 import { renderAnimationIcon } from "utils/renderAnimationIcon";
 import { ICON_ANIMATION_DATA } from "constants/constantsDetailClinic";
+import dayjs from "dayjs";
 
 const customArrow = ({ type }) => {
   return (
@@ -42,7 +43,7 @@ const DetailClinic = () => {
   const [doctorList, setDoctorList] = useState();
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
   const [selectedDoctor, setSelectedDoctor] = useState("");
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(dayjs().format("DD/MM/YYYY"));
 
   const dispatch = useDispatch();
 
@@ -74,7 +75,7 @@ const DetailClinic = () => {
           <Container className="info-container">
             <Row>
               <Col lg={6} className="info-content">
-                <h2 className="clinic-name">{clinicData.name}</h2>
+                <h1 className="clinic-name">{clinicData.name}</h1>
                 <p className="clinic-decription">{clinicData.decription}</p>
                 <div className="clinic-service">
                   <h3>Services</h3>
@@ -126,32 +127,64 @@ const DetailClinic = () => {
             </Container>
           </div>
         </section>
-        <section>
-          <h1>Select time slots:</h1>
-          <TimeSlotRadioGroup
-            options={clinicData.timeOptions}
-            handeleGetTimeValue={setSelectedTimeSlot}
-          />
-          <h2>Selected time slots:</h2>
+        <section className="booking">
+          <Container>
+            <Row className="booking__title">
+              <div>
+                <h6>Booking</h6>
+                <h2>Book Appointment</h2>
+              </div>
+            </Row>
+            <Row className="booking__container">
+              <Col className="booking__container--doctor">
+                <Typography.Title className="bg-title" level={4}>
+                  Select a doctor:
+                </Typography.Title>
 
-          <Select
-            placeholder="Select a doctor"
-            style={{
-              minWidth: 200,
-            }}
-            onChange={setSelectedDoctor}
-            options={
-              doctorList &&
-              doctorList.map((item) => {
-                return {
-                  value: item.name,
-                  label: item.name,
-                };
-              })
-            }
-          />
+                <Select
+                  placeholder="Select a doctor"
+                  style={{
+                    minWidth: 200,
+                  }}
+                  onChange={setSelectedDoctor}
+                  options={
+                    doctorList &&
+                    doctorList.map((item) => {
+                      return {
+                        value: item.name,
+                        label: item.name,
+                      };
+                    })
+                  }
+                />
+              </Col>
+              <Col className="booking__container--date">
+                <Typography.Title className="bg-title" level={4}>
+                  Select a date:
+                </Typography.Title>
 
-          <CustomCalendar setSelectedDate={setSelectedDate} />
+                <CustomCalendar setSelectedDate={setSelectedDate} />
+              </Col>
+              <Col className="booking__container--time">
+                <Typography.Title className="bg-title" level={4}>
+                  Select time slot:
+                </Typography.Title>
+
+                <TimeSlotRadioGroup
+                  options={clinicData.timeOptions}
+                  handeleGetTimeValue={setSelectedTimeSlot}
+                />
+              </Col>
+            </Row>
+            <Row className="booking__container--button">
+              <Tooltip
+                title="You need to login to make an appointment !"
+                color={"#1677ff"}
+              >
+                <button>Booking</button>
+              </Tooltip>
+            </Row>
+          </Container>
         </section>
       </>
     )

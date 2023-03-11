@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Calendar, Col, Row, Select, Typography } from "antd";
-import moment from "moment";
+import dayjs from "dayjs";
 
 const CustomCalendar = ({ setSelectedDate }) => {
   const disabledDate = (current) => {
-    if (current && current.endOf("d").valueOf() < moment().endOf("day")) {
+    if (current && current.endOf("d").valueOf() < dayjs().endOf("day")) {
       return true;
     }
-    if (current && (current.day() === 6 || current.day() === 0)) {
-      return true;
-    }
+    // if (current && (current.day() === 6 || current.day() === 0)) {
+    //   return true;
+    // }
     return false;
   };
 
@@ -29,7 +29,7 @@ const CustomCalendar = ({ setSelectedDate }) => {
     for (let i = start; i < end; i++) {
       monthOptions.push(
         <Select.Option
-          disabled={i < moment().month() && year <= moment().year()}
+          disabled={i < dayjs().month() && year <= dayjs().year()}
           key={i}
           value={i}
           className="month-item"
@@ -39,10 +39,10 @@ const CustomCalendar = ({ setSelectedDate }) => {
       );
     }
     const options = [];
-    for (let i = moment().year() - 2; i < year + 7; i += 1) {
+    for (let i = dayjs().year() - 2; i < year + 7; i += 1) {
       options.push(
         <Select.Option
-          disabled={i < moment().year()}
+          disabled={i < dayjs().year()}
           key={i}
           value={i}
           className="year-item"
@@ -57,7 +57,6 @@ const CustomCalendar = ({ setSelectedDate }) => {
           padding: 8,
         }}
       >
-        <Typography.Title level={4}>Custom header</Typography.Title>
         <Row gutter={8}>
           <Col>
             <Select
@@ -96,7 +95,9 @@ const CustomCalendar = ({ setSelectedDate }) => {
       disabledDate={disabledDate}
       fullscreen={false}
       onSelect={(value) => {
-        setSelectedDate(value.format("DD/MM/YYYY"));
+        disabledDate(value)
+          ? setSelectedDate(dayjs().format("DD/MM/YYYY"))
+          : setSelectedDate(value.format("DD/MM/YYYY"));
       }}
       headerRender={headerRender}
     />
