@@ -1,4 +1,4 @@
-import { Empty } from "antd";
+import { Button, Empty, Result } from "antd";
 import { Routes, Route, Link } from "react-router-dom";
 import { ROUTE } from "constants/constantsGlobal";
 
@@ -17,17 +17,13 @@ function App() {
         <Route
           path={ROUTE.NOT_FOUND}
           element={
-            <Link
-              to={ROUTE.HOME}
-              style={{
-                display: "block",
-                margin: "20% auto",
-                fontWeight: "bold",
-                fontSize: 40,
-                width: 475,
-              }}
-            >
-              <Empty />
+            <Link to={ROUTE.HOME}>
+              <Result
+                status="404"
+                title="404"
+                subTitle="Sorry , the page you visited will be completed soon!"
+                extra={<Button type="primary">Back Home</Button>}
+              />
             </Link>
           }
         />

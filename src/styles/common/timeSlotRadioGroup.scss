@@ -1,0 +1,37 @@
+@import "../rule/variables.scss";
+@import "../rule/mixin.scss";
+
+.slot-time {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  margin-right: 10px;
+  outline: none;
+  background-color: #dee6f5;
+  border: 1px solid $primary-color;
+
+  &:checked {
+    &::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &::before {
+    content: "\2714";
+    font-size: 12px;
+    color: #fff;
+    background-color: #007bff;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    opacity: 0;
+    transform: scale(0.2);
+    @include transition-ease-in-out(0.2s);
+  }
+}
