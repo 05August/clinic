@@ -287,6 +287,8 @@
     }
 
     &--date {
+      user-select: none;
+
       .ant-picker-calendar {
         border: 2px solid rgba(86, 90, 207, 0.2);
         padding: 10px 15px;
@@ -310,6 +312,8 @@
     }
 
     &--time {
+      user-select: none;
+
       .time-slot-item {
         display: flex;
         align-items: center;
