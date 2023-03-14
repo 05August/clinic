@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-
 import { useSearchParams, Link, useNavigate } from "react-router-dom";
 import logo from "assets/img/logo.png";
 import { ROUTE } from "constants/constantsGlobal";
 import { NAV_DATA } from "constants/constantsHeader";
 import { HiPlusSm, HiOutlineSearch } from "react-icons/hi";
+
 const Header = () => {
   const [offset, setOffset] = useState(0);
   const [searchValue, setSearchValue] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset);
+    window.scrollTo({ top: 0, behavior: "smooth" });
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
