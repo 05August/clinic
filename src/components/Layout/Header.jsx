@@ -23,8 +23,7 @@ const Header = () => {
     e.preventDefault();
     searchParams.set("keyword", searchValue.trim().toLowerCase());
     setSearchParams(searchParams);
-    console.log(searchParams.get("keyword" || ""));
-    navigate(ROUTE.CLINIC);
+    navigate(`${ROUTE.CLINIC}?keyword=${searchValue.trim().toLowerCase()}`);
   };
 
   return (

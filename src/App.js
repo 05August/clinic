@@ -9,6 +9,7 @@ import DetailClinic from "pages/user/DetailClinic";
 import Login from "pages/user/Login";
 
 import "styles/style.scss";
+import Clinic from "pages/user/Clinic";
 function App() {
   return (
     <div className="App">
@@ -30,16 +31,7 @@ function App() {
         <Route path={ROUTE.HOME} element={<DefaultLayout />}>
           <Route index element={<Home />} />
           <Route path={ROUTE.ABOUT_US} element={<>About us</>} />
-          <Route
-            path={ROUTE.CLINIC}
-            element={
-              <div
-                style={{ textAlign: "center", padding: "100px 0px", fontSize: "50px" }}
-              >
-                <h1>Clinic Coming Soon...</h1>
-              </div>
-            }
-          />
+          <Route path={ROUTE.CLINIC} element={<Clinic />} />
           <Route path={ROUTE.CLINIC_DETAIL} element={<DetailClinic />} />
         </Route>
         <Route path={ROUTE.LOGIN} element={<Login />} />
