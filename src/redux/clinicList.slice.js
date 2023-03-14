@@ -1,12 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
 import clientServer from "server/clientServer";
+import { setLoading } from "./global.slice";
 
 export const getClinicList = createAsyncThunk("getClinicList", async () => {
   try {
+    useDispatch(setLoading(true));
     const getResponse = await clientServer.get("clinicList");
     return getResponse.data;
   } catch (error) {
     return error;
+  } finally {
+    useDispatch(setLoading(false));
   }
 });
 
