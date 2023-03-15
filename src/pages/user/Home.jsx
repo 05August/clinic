@@ -13,7 +13,6 @@ import { renderAnimationIcon } from "utils/renderAnimationIcon";
 
 const Home = () => {
   const [hotSearchClinic, setHotSearchClinic] = useState([]);
-
   const dispatch = useDispatch();
   useEffect(() => {
     const url = new URL(`${process.env.REACT_APP_BASE_URL}clinicList`);
