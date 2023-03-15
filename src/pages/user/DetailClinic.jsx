@@ -39,10 +39,13 @@ const settingSlide = {
 
 const DetailClinic = () => {
   const currentIdClinic = localStorageUlti("currentIdClinic").get();
+  const isLogin = localStorageUlti("isLogin", false).get();
+
   const [clinicData, setClinicData] = useState();
   const [doctorList, setDoctorList] = useState();
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
-  const [selectedDoctor, setSelectedDoctor] = useState("");
+  const [selectedDoctor, setSelectedDoctor] = useState(0);
+
   const [selectedDate, setSelectedDate] = useState(dayjs().format("DD/MM/YYYY"));
 
   const dispatch = useDispatch();
@@ -67,6 +70,24 @@ const DetailClinic = () => {
 
     fetchData();
   }, []);
+
+  const fillterOptionTimeSlot = (listOptions, idDoctor, date) => {
+    return listOptions.filter((item, index) => {
+      // lấy index trong data disabled của ngày được user chọn
+      const disabledIndex = doctorList[idDoctor - 1].appointmentSchedule.findIndex(
+        (element) => element.date === date
+      );
+
+      //lấy ra danh sách timeSlot đã được đặt
+      const disabledTime =
+        disabledIndex >= 0
+          ? doctorList[idDoctor - 1].appointmentSchedule[disabledIndex].time
+          : [];
+
+      //Cuối cùng là trả về timeSlot trống
+      return disabledTime && !disabledTime.includes(index);
+    });
+  };
 
   return (
     clinicData && (
@@ -151,7 +172,7 @@ const DetailClinic = () => {
                     doctorList &&
                     doctorList.map((item) => {
                       return {
-                        value: item.name,
+                        value: item.doctorId,
                         label: item.name,
                       };
                     })
@@ -163,7 +184,14 @@ const DetailClinic = () => {
                   Select a date:
                 </Typography.Title>
 
-                <CustomCalendar setSelectedDate={setSelectedDate} />
+                <CustomCalendar
+                  setSelectedDate={setSelectedDate}
+                  disabledDoctorDate={
+                    selectedDoctor
+                      ? doctorList[selectedDoctor - 1].disabledDate
+                      : ["29/2/2000"]
+                  }
+                />
               </Col>
               <Col className="booking__container--time">
                 <Typography.Title className="bg-title" level={4}>
@@ -171,17 +199,25 @@ const DetailClinic = () => {
                 </Typography.Title>
 
                 <TimeSlotRadioGroup
-                  options={clinicData.timeOptions}
+                  options={
+                    selectedDate && selectedDoctor
+                      ? fillterOptionTimeSlot(
+                          clinicData.timeOptions,
+                          selectedDoctor,
+                          selectedDate
+                        )
+                      : clinicData.timeOptions
+                  }
                   handeleGetTimeValue={setSelectedTimeSlot}
                 />
               </Col>
             </Row>
             <Row className="booking__container--button">
               <Tooltip
-                title="You need to login to make an appointment !"
+                title={isLogin ? "" : "You need to login to make an appointment !"}
                 color={"#1677ff"}
               >
-                <button>Booking</button>
+                <button disabled={!isLogin}>Booking</button>
               </Tooltip>
             </Row>
           </Container>

@@ -2,14 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Button, Calendar, Col, Row, Select, Typography } from "antd";
 import dayjs from "dayjs";
 
-const CustomCalendar = ({ setSelectedDate }) => {
+const CustomCalendar = ({ setSelectedDate, disabledDoctorDate }) => {
   const disabledDate = (current) => {
     if (current && current.endOf("d").valueOf() < dayjs().endOf("day")) {
       return true;
     }
-    // if (current && (current.day() === 6 || current.day() === 0)) {
-    //   return true;
-    // }
+    if (
+      current &&
+      disabledDoctorDate &&
+      disabledDoctorDate.includes(current.format("DD/MM/YYYY"))
+    ) {
+      return true;
+    }
+
     return false;
   };
 
