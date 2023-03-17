@@ -10,6 +10,8 @@ import Login from "pages/user/Login";
 
 import "styles/style.scss";
 import Clinic from "pages/user/Clinic";
+import Profile from "pages/user/Profile";
+import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <div className="App">
@@ -33,9 +35,22 @@ function App() {
           <Route path={ROUTE.ABOUT_US} element={<>About us</>} />
           <Route path={ROUTE.CLINIC} element={<Clinic />} />
           <Route path={ROUTE.CLINIC_DETAIL} element={<DetailClinic />} />
+          <Route path={ROUTE.PROFILE} element={<Profile />} />
         </Route>
         <Route path={ROUTE.LOGIN} element={<Login />} />
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 }

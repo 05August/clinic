@@ -3,8 +3,9 @@ import Slider from "react-slick";
 import { useDispatch } from "react-redux";
 import { Select, Tooltip, Typography } from "antd";
 import { Container, Row, Col } from "react-bootstrap";
-import { BsCheck } from "react-icons/bs";
+import { toast } from "react-toastify";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { BsCheck } from "react-icons/bs";
 import DoctorInfo from "components/Common/DoctorInfo";
 import TimeSlotRadioGroup from "components/Common/TimeSlotRadioGroup";
 import CustomCalendar from "components/Common/CustomCalender";
@@ -37,17 +38,25 @@ const settingSlide = {
   prevArrow: customArrow({ type: "prev" }),
 };
 
+const settingToast = {
+  position: "top-right",
+  autoClose: 1000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "light",
+};
+
 const DetailClinic = () => {
   const currentIdClinic = localStorageUlti("currentIdClinic").get();
   const isLogin = localStorageUlti("isLogin", false).get();
-
   const [clinicData, setClinicData] = useState();
   const [doctorList, setDoctorList] = useState();
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
-  const [selectedDoctor, setSelectedDoctor] = useState(0);
-
+  const [selectedDoctor, setSelectedDoctor] = useState();
   const [selectedDate, setSelectedDate] = useState(dayjs().format("DD/MM/YYYY"));
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -72,21 +81,44 @@ const DetailClinic = () => {
   }, []);
 
   const fillterOptionTimeSlot = (listOptions, idDoctor, date) => {
-    return listOptions.filter((item, index) => {
-      // lấy index trong data disabled của ngày được user chọn
-      const disabledIndex = doctorList[idDoctor - 1].appointmentSchedule.findIndex(
-        (element) => element.date === date
+    // lấy index trong data disabled của ngày được user chọn
+    const disabledIndex = doctorList[idDoctor - 1].appointmentSchedule.findIndex(
+      (element) => element.date === date
+    );
+
+    //lấy ra danh sách timeSlot đã được đặt
+    const disabledTime =
+      disabledIndex >= 0
+        ? doctorList[idDoctor - 1].appointmentSchedule[disabledIndex].time
+        : [];
+
+    //xử lý timeSlot đã qua trong ngày
+    const pastTimeSlotIndex = listOptions.findIndex((item) => {
+      const [startTimeString, endTimeString] = item.split("-");
+
+      return dayjs(dayjs().format("H:MM"), "HH:mm").isBefore(
+        dayjs(startTimeString, "HH:mm")
       );
-
-      //lấy ra danh sách timeSlot đã được đặt
-      const disabledTime =
-        disabledIndex >= 0
-          ? doctorList[idDoctor - 1].appointmentSchedule[disabledIndex].time
-          : [];
-
-      //Cuối cùng là trả về timeSlot trống
-      return disabledTime && !disabledTime.includes(index);
     });
+
+    if (date === dayjs().format("DD/MM/YYYY")) {
+      for (let i = 0; i < pastTimeSlotIndex; i++) {
+        disabledTime.push(listOptions[i]);
+      }
+    }
+    //Cuối cùng là trả về timeSlot có thể chọn
+
+    return listOptions.filter((item, index) => {
+      return disabledTime && !disabledTime.includes(item);
+    });
+  };
+
+  const handleBooking = (doctorId, date, timeSlot) => {
+    if (doctorId && date && timeSlot) {
+      toast.success("🦄 Wow so easy!", settingToast);
+    } else {
+      toast.warning("🦄 You have not entered enough fields!", settingToast);
+    }
   };
 
   return (
@@ -217,7 +249,14 @@ const DetailClinic = () => {
                 title={isLogin ? "" : "You need to login to make an appointment !"}
                 color={"#1677ff"}
               >
-                <button disabled={!isLogin}>Booking</button>
+                <button
+                  disabled={!isLogin}
+                  onClick={() => {
+                    handleBooking(selectedDoctor, selectedDate, selectedTimeSlot);
+                  }}
+                >
+                  Booking
+                </button>
               </Tooltip>
             </Row>
           </Container>
