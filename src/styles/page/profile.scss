@@ -1,0 +1,79 @@
+@import "../rule/variables.scss";
+@import "../rule/mixin.scss";
+
+.profile {
+  background-color: $white;
+  padding: 1.25rem 0 3.125rem;
+
+  &-sidebar {
+    .nav {
+      &-item {
+        .nav-link {
+          background-color: unset;
+          color: $black;
+          display: flex;
+
+          &:hover {
+            color: $primary-color;
+          }
+
+          &.active {
+            color: $primary-color;
+          }
+
+          svg {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  &-content {
+    .booked {
+      position: relative;
+      box-sizing: border-box;
+      min-width: 0;
+      background: #f5f5f5;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.13);
+      border-radius: 0.125rem;
+
+      &__nav {
+        width: 100%;
+        margin-bottom: 12px;
+        display: flex;
+        overflow: hidden;
+        top: 0;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+
+        &--item {
+          cursor: pointer;
+          user-select: none;
+          padding: 16px 0;
+          font-size: 16px;
+          line-height: 19px;
+          text-align: center;
+          color: rgba(0, 0, 0, 0.8);
+          border-bottom: 2px solid rgba(0, 0, 0, 0.09);
+          display: flex;
+          flex: 1;
+          overflow: hidden;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600;
+          transition: color 0.2s;
+
+          &.active {
+            color: #ee4d2d;
+            border-color: #ee4d2d;
+          }
+
+          &:hover {
+            color: #ee4d2d;
+          }
+        }
+      }
+    }
+  }
+}
