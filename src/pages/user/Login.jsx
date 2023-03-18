@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "assets/img/logo.png";
 import * as Yup from "yup";
-import { auth, google, facebook, twitter, github } from "./Firebase";
+import { auth, google, facebook, twitter, github } from "../../config/Firebase";
 import { signInWithPopup, signOut } from "@firebase/auth";
 import { ROUTE } from "constants/constantsGlobal";
 import { localStorageUlti } from "functions/localStorage";
@@ -14,6 +14,7 @@ const Login = () => {
   const [database, setDatabase] = useState([]);
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoginSocial, setIsLoginSocial] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
   const [user, setUser] = useState(null);
@@ -22,16 +23,21 @@ const Login = () => {
 
   const loginSocial = async (provider) => {
     const result = await signInWithPopup(auth, provider);
-    setUser(result.user);
-    setIsLogin(true);
-    console.log(result);
-  };
 
-  const logout = async () => {
-    const result = await signOut(auth);
-    setUser(null);
-    setIsLogin(false);
-    console.log(result);
+    setUser(result.user);
+    console.log("result.user.email:", result.user.email);
+    localStorageUlti("emailSocial", result.user.email).set(result.user.email);
+    const userDataSocial = database.find((user) => {
+      return user.email === result.user.email;
+    });
+    if (userDataSocial) {
+      console.log("1:", "da co tai khoan");
+      navigate(ROUTE.HOME);
+    } else {
+      console.log("1:", "chua co tai khoan tao profile");
+
+      navigate(ROUTE.PROFILE);
+    }
   };
 
   ///////////////////////////////////////////// register
@@ -64,10 +70,15 @@ const Login = () => {
       } catch (error) {}
     },
     validationSchema: Yup.object({
-      name: Yup.string().required(" Required").min(4, "must be 4 character or more"),
+      name: Yup.string()
+        .required(" Required")
+        .min(4, "must be 4 character or more"),
       email: Yup.string()
         .required("Required")
-        .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "please enter a validation"),
+        .matches(
+          /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+          "please enter a validation"
+        ),
       password: Yup.string()
         .required("Required")
         .matches(
@@ -91,7 +102,7 @@ const Login = () => {
       } catch (error) {}
     };
     getTodos();
-  }, [database]);
+  }, []);
   ///////////////////////////////////logic login
   const handleLogin = (e) => {
     e.preventDefault();
@@ -106,7 +117,10 @@ const Login = () => {
       } else {
         setIsSubmitted(true);
         localStorageUlti("isLogin").set("true");
-        localStorageUlti("dataUser").set({ id: userData.id, name: userData.userName });
+        localStorageUlti("dataUser").set({
+          id: userData.id,
+          name: userData.userName,
+        });
         userData.activeAccount ? navigate(ROUTE.HOME) : navigate(ROUTE.PROFILE);
       }
     } else {
@@ -123,7 +137,9 @@ const Login = () => {
   };
   ////////////////tao message khi login dung sai
   const renderErrorMessage = (name) =>
-    name === errorMessages.name && <div className="error">{errorMessages.message}</div>;
+    name === errorMessages.name && (
+      <div className="error">{errorMessages.message}</div>
+    );
 
   return (
     <div>
@@ -131,9 +147,12 @@ const Login = () => {
         <div>User is successfully logged in</div>
       ) : (
         <section className="login">
-          <div className={`login-container${isLogin ? "" : " right-panel-active"}`}>
+          <div
+            className={`login-container${isLogin ? "" : " right-panel-active"}`}
+          >
             <div className="form-container register-item">
               <form onSubmit={formik.handleSubmit}>
+                <h1>Register Form</h1>
                 <input
                   type="text"
                   id="name"
@@ -142,7 +161,9 @@ const Login = () => {
                   value={formik.values.name}
                   onChange={formik.handleChange}
                 />
-                {formik.errors.name && <p className="error"> {formik.errors.name}</p>}
+                {formik.errors.name && (
+                  <p className="error"> {formik.errors.name}</p>
+                )}
 
                 <input
                   type="text"
@@ -152,7 +173,9 @@ const Login = () => {
                   value={formik.values.email}
                   onChange={formik.handleChange}
                 />
-                {formik.errors.email && <p className="error"> {formik.errors.email}</p>}
+                {formik.errors.email && (
+                  <p className="error"> {formik.errors.email}</p>
+                )}
                 <input
                   type="password"
                   id="password"
@@ -177,28 +200,7 @@ const Login = () => {
                 )}
                 <button>register</button>
 
-                <span>or use your account</span>
-                <div className="social-container">
-                  <Link to="" className="social">
-                    <i
-                      onClick={() => loginSocial(facebook)}
-                      className="fa-brands fa-square-facebook"
-                    ></i>
-                  </Link>
-                  <Link to="#" className="social">
-                    <i
-                      onClick={() => loginSocial(google)}
-                      className="fa-brands fa-google"
-                    ></i>
-                  </Link>
-
-                  <Link to="#" className="social">
-                    <i
-                      onClick={() => loginSocial(github)}
-                      class="fa-brands fa-github"
-                    ></i>
-                  </Link>
-                </div>
+                {/*  */}
               </form>
             </div>
             <div className="form-container login-item">
@@ -215,7 +217,7 @@ const Login = () => {
 
                 <input
                   name="pass"
-                  type="text"
+                  type="password"
                   placeholder="Password"
                   required
                   onChange={(e) => setPasswordLogin(e.target.value)}
@@ -235,18 +237,25 @@ const Login = () => {
 
                 <span>or use your account</span>
                 <div className="social-container">
-                  <div className="social-container">
-                    <Link to="" className="social">
-                      <i className="fa-brands fa-square-facebook"></i>
-                    </Link>
-                    <Link to="#" className="social">
-                      <i className="fa-brands fa-google"></i>
-                    </Link>
+                  <Link to="" className="social">
+                    <i
+                      onClick={() => loginSocial(facebook)}
+                      className="fa-brands fa-square-facebook"
+                    ></i>
+                  </Link>
+                  <Link to="#" className="social">
+                    <i
+                      onClick={() => loginSocial(google)}
+                      className="fa-brands fa-google"
+                    ></i>
+                  </Link>
 
-                    <Link to="#" className="social">
-                      <i class="fa-brands fa-github"></i>
-                    </Link>
-                  </div>
+                  <Link to="#" className="social">
+                    <i
+                      onClick={() => loginSocial(github)}
+                      className="fa-brands fa-github"
+                    ></i>
+                  </Link>
                 </div>
               </form>
             </div>
@@ -272,8 +281,15 @@ const Login = () => {
                   <h1 className="title">
                     Start yout <br /> journy now
                   </h1>
-                  <p>if you don't have an account yet, join us and start your journey.</p>
-                  <button onClick={() => togglePage()} className="ghost" id="register">
+                  <p>
+                    if you don't have an account yet, join us and start your
+                    journey.
+                  </p>
+                  <button
+                    onClick={() => togglePage()}
+                    className="ghost"
+                    id="register"
+                  >
                     Register<i className="fa-thin fa-arrow-right"></i>
                   </button>
                 </div>

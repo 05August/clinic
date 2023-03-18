@@ -13,6 +13,15 @@ const Profile = () => {
   const [type, setType] = useState("account");
   const [navBookedActive, setNavBookedActive] = useState("All");
   const [dataUser, setDataUser] = useState();
+  const [userProfile, setUserProfile] = useState({
+    userName: "",
+    fullName: "",
+    email: "",
+    phone: "",
+    dateOfBirth: "",
+    gender: "",
+    activeAccount: false,
+  });
 
   const dispatch = useDispatch();
 
@@ -103,7 +112,9 @@ const Profile = () => {
           {NAV_BOOKED.map((item) => {
             return (
               <div
-                className={`booked__nav--item ${navBookedActive === item && "active"}`}
+                className={`booked__nav--item ${
+                  navBookedActive === item && "active"
+                }`}
                 onClick={() => {
                   setNavBookedActive(item);
                 }}
@@ -120,6 +131,132 @@ const Profile = () => {
       </div>
     );
   };
+  const handleChangeProfile = (e) => {
+    e.preventDefault();
+    const name = e.target.name;
+    const value = e.target.value;
+    setUserProfile((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+  const renderProfile = () => {
+    const handleSubmitProfile = async (e) => {
+      e.preventDefault();
+      console.log("userProfile:", userProfile);
+
+      try {
+        const res = await axios.post(
+          "https://62fbae6be4bcaf53518af2ed.mockapi.io/api/users",
+          { ...userProfile, activeAccount: true }
+        );
+        // console.log("res.data:", res.data);
+      } catch (error) {}
+    };
+    return (
+      <form onSubmit={handleSubmitProfile}>
+        <div className="form-group row">
+          <label className="col-sm-2 col-form-label">User Name</label>
+          <div className="col-sm-10">
+            <input
+              onChange={handleChangeProfile}
+              name="userName"
+              type="text"
+              className="form-control"
+              placeholder="User Name"
+              required
+            />
+          </div>
+          <label className="col-sm-2 col-form-label">Full Name</label>
+          <div className="col-sm-10">
+            <input
+              onChange={handleChangeProfile}
+              name="fullName"
+              type="text"
+              className="form-control"
+              placeholder="Full Name"
+              required
+            />
+          </div>
+          <label className="col-sm-2 col-form-label">Email</label>
+          <div className="col-sm-10">
+            <input
+              value={localStorageUlti("emailSocial").get()}
+              disabled
+              onChange={handleChangeProfile}
+              name="email"
+              type="email"
+              className="form-control"
+              placeholder="Email"
+            />
+          </div>
+          <label className="col-sm-2 col-form-label">Phone Number</label>
+          <div className="col-sm-10">
+            <input
+              onChange={handleChangeProfile}
+              name="phone"
+              type="tel"
+              className="form-control"
+              placeholder="Phone Number"
+              required
+            />
+          </div>
+          <label className="col-sm-2 col-form-label">Date Of Birth</label>
+          <div className="col-sm-10">
+            <input
+              onChange={handleChangeProfile}
+              name="dateOfBirth"
+              type="date"
+              className="form-control"
+              placeholder="Date Of Birth"
+              required
+            />
+          </div>
+          <label className="col-sm-2 col-form-label">Gender</label>
+          <div className="col-sm-10 flexGender ">
+            <div className="gender">
+              <label for="male">Male</label>
+              <input
+                onChange={handleChangeProfile}
+                type="radio"
+                name="gender"
+                id="male"
+                value="male"
+                required
+              />
+            </div>
+            <div className="gender">
+              <label for="female">Female</label>
+              <input
+                onChange={handleChangeProfile}
+                type="radio"
+                name="gender"
+                id="female"
+                value="female"
+                required
+              />
+            </div>
+            <div className="gender">
+              <label for="other">Other</label>
+              <input
+                onChange={handleChangeProfile}
+                type="radio"
+                name="gender"
+                id="other"
+                value="other"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="form-group row">
+          <div className="col-sm-10">
+            <button className="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </form>
+    );
+  };
 
   return (
     <section className="profile">
@@ -133,9 +270,11 @@ const Profile = () => {
             </Col>
             <Col sm={9} className="profile-content">
               <Tab.Content>
-                <Tab.Pane eventKey="account">account</Tab.Pane>
+                <Tab.Pane eventKey="account">{renderProfile()}</Tab.Pane>
                 <Tab.Pane eventKey="change_password">changepassword</Tab.Pane>
-                <Tab.Pane eventKey="appointment_schedule">{renderBooked()}</Tab.Pane>
+                <Tab.Pane eventKey="appointment_schedule">
+                  {renderBooked()}
+                </Tab.Pane>
               </Tab.Content>
             </Col>
           </Row>
