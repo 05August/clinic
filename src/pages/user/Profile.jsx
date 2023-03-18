@@ -13,6 +13,7 @@ const Profile = () => {
   const [type, setType] = useState("account");
   const [navBookedActive, setNavBookedActive] = useState("All");
   const [dataUser, setDataUser] = useState();
+  const [bookedList, setBookedList] = useState();
 
   const dispatch = useDispatch();
 
@@ -25,10 +26,15 @@ const Profile = () => {
       try {
         dispatch(setIsPerLoading(true));
         const user = localStorageUlti("dataUser").get();
-        const getResponse = await axios.get(
+        const getResponseUserData = await axios.get(
           `https://64131b563b710647375fa688.mockapi.io/userList/${user.id}`
         );
-        setDataUser(getResponse.data);
+        const getReponseBookedList = await axios.get(
+          `https://64131b563b710647375fa688.mockapi.io/bookedList?userId=${user.id}`
+        );
+
+        setDataUser(getResponseUserData.data);
+        setBookedList(getReponseBookedList.data);
       } finally {
         dispatch(setIsPerLoading(false));
       }
@@ -60,7 +66,7 @@ const Profile = () => {
   };
 
   const renderBooked = () => {
-    const NAV_BOOKED = ["All", "Pending", "Completed"];
+    const NAV_BOOKED = ["All", "Pending", "Completed", "Cancel"];
     const columns = [
       {
         title: "Clinic",
@@ -85,9 +91,8 @@ const Profile = () => {
     ];
 
     const data =
-      dataUser &&
-      dataUser.booked &&
-      fillterStatus(dataUser.booked).map((item, index) => {
+      bookedList &&
+      fillterStatus(bookedList[0].booked).map((item, index) => {
         return {
           key: `booked-${index}`,
           clinic: item.clinicName,
@@ -97,6 +102,7 @@ const Profile = () => {
           status: item.status,
         };
       });
+
     return (
       <div className="booked">
         <div className="booked__nav">
@@ -115,7 +121,7 @@ const Profile = () => {
           })}
         </div>
         <div className="booked__content">
-          <Table columns={columns} dataSource={data} size="small" />
+          {data && <Table columns={columns} dataSource={data} size="small" />}
         </div>
       </div>
     );
