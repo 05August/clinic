@@ -19,6 +19,17 @@
 @import 'react-toastify/dist/ReactToastify.css';
 .App{
   position: relative;
+
+  .containerBody{
+    position: relative;
+
+    .ant-skeleton{
+      display: none; 
+    position: absolute;
+    z-index: 999;
+    background-color: white;
+   }
+  }
 }
 
 

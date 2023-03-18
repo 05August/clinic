@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Nav, Row, Tab } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { setIsPerLoading } from "redux/global.slice";
+import { setSkeleton } from "redux/global.slice";
 
 const Profile = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,7 +24,7 @@ const Profile = () => {
   useEffect(() => {
     async function getPerData() {
       try {
-        dispatch(setIsPerLoading(true));
+        dispatch(setSkeleton(true));
         const user = localStorageUlti("dataUser").get();
         const getResponseUserData = await axios.get(
           `https://64131b563b710647375fa688.mockapi.io/userList/${user.id}`
@@ -36,7 +36,7 @@ const Profile = () => {
         setDataUser(getResponseUserData.data);
         setBookedList(getReponseBookedList.data);
       } finally {
-        dispatch(setIsPerLoading(false));
+        dispatch(setSkeleton(false));
       }
     }
     getPerData();
