@@ -7,6 +7,7 @@ import DefaultLayout from "layouts/DefaultLayout";
 import Home from "pages/user/Home";
 import DetailClinic from "pages/user/DetailClinic";
 import Login from "pages/user/Login";
+import AboutUs from "pages/user/AboutUs";
 
 import "styles/style.scss";
 import Clinic from "pages/user/Clinic";
