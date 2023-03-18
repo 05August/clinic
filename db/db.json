@@ -917,5 +917,36 @@
         }
       ]
     }
+  ],
+  "bookedList": [
+    {
+      "id": 1,
+      "userId": 1,
+      "booked": [
+        {
+          "clinicId": 1,
+          "doctorId": 4,
+          "clinicName": "Nha Khoa Việt Pháp",
+          "doctorName": "Dr. Thuận Đẹp Chai",
+          "date": "20/03/2023",
+          "timeSlot": "15:30 - 16:30",
+          "status": "Pending"
+        },
+        {
+          "clinicId": 1,
+          "doctorId": 4,
+          "clinicName": "Nha Khoa Việt Pháp",
+          "doctorName": "Dr. Thuận Đẹp Chai",
+          "date": "15/03/2023",
+          "timeSlot": "15:30 - 16:30",
+          "status": "Completed"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "userId": 2,
+      "booked": []
+    }
   ]
 }

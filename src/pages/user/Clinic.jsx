@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { setIsPerLoading } from "redux/global.slice";
+import { setSkeleton } from "redux/global.slice";
 import clientServer from "server/clientServer";
 
 const Clinic = () => {
@@ -11,7 +11,7 @@ const Clinic = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        dispatch(setIsPerLoading(true));
+        dispatch(setSkeleton(true));
         const getResponseClinic = await clientServer.get(
           `clinicList?search=${searchParams.get("keyword" || "")}`
         );
@@ -26,7 +26,7 @@ const Clinic = () => {
       } catch (error) {
         console.error(error);
       } finally {
-        dispatch(setIsPerLoading(false));
+        dispatch(setSkeleton(false));
       }
     }
     fetchData();

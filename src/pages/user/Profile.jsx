@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Nav, Row, Tab } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { setIsPerLoading } from "redux/global.slice";
+import { setSkeleton } from "redux/global.slice";
 
 const Profile = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -22,6 +22,8 @@ const Profile = () => {
     gender: "",
     activeAccount: false,
   });
+  const [bookedList, setBookedList] = useState();
+
 
   const dispatch = useDispatch();
 
@@ -32,14 +34,19 @@ const Profile = () => {
   useEffect(() => {
     async function getPerData() {
       try {
-        dispatch(setIsPerLoading(true));
+        dispatch(setSkeleton(true));
         const user = localStorageUlti("dataUser").get();
-        const getResponse = await axios.get(
+        const getResponseUserData = await axios.get(
           `https://64131b563b710647375fa688.mockapi.io/userList/${user.id}`
         );
-        setDataUser(getResponse.data);
+        const getReponseBookedList = await axios.get(
+          `https://64131b563b710647375fa688.mockapi.io/bookedList?userId=${user.id}`
+        );
+
+        setDataUser(getResponseUserData.data);
+        setBookedList(getReponseBookedList.data);
       } finally {
-        dispatch(setIsPerLoading(false));
+        dispatch(setSkeleton(false));
       }
     }
     getPerData();
@@ -69,7 +76,7 @@ const Profile = () => {
   };
 
   const renderBooked = () => {
-    const NAV_BOOKED = ["All", "Pending", "Completed"];
+    const NAV_BOOKED = ["All", "Pending", "Completed", "Cancel"];
     const columns = [
       {
         title: "Clinic",
@@ -94,9 +101,8 @@ const Profile = () => {
     ];
 
     const data =
-      dataUser &&
-      dataUser.booked &&
-      fillterStatus(dataUser.booked).map((item, index) => {
+      bookedList &&
+      fillterStatus(bookedList[0].booked).map((item, index) => {
         return {
           key: `booked-${index}`,
           clinic: item.clinicName,
@@ -106,6 +112,7 @@ const Profile = () => {
           status: item.status,
         };
       });
+
     return (
       <div className="booked">
         <div className="booked__nav">
@@ -126,7 +133,7 @@ const Profile = () => {
           })}
         </div>
         <div className="booked__content">
-          <Table columns={columns} dataSource={data} size="small" />
+          {data && <Table columns={columns} dataSource={data} size="small" />}
         </div>
       </div>
     );

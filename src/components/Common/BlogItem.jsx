@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { RiArrowRightSLine, RiCalendarTodoFill } from "react-icons/ri";
-import { convertDate } from "until/convertDate";
+import { convertDate } from "utils/convertDate"
 
 const BlogItem = ({ data }) => {
   return (

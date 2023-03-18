@@ -10,12 +10,15 @@ import DoctorInfo from "components/Common/DoctorInfo";
 import TimeSlotRadioGroup from "components/Common/TimeSlotRadioGroup";
 import CustomCalendar from "components/Common/CustomCalender";
 
-import { setIsPerLoading } from "redux/global.slice";
+import { setPerLoading, setSkeleton } from "redux/global.slice";
 import clientServer from "server/clientServer";
 import { localStorageUlti } from "functions/localStorage";
 import { renderAnimationIcon } from "utils/renderAnimationIcon";
 import { ICON_ANIMATION_DATA } from "constants/constantsDetailClinic";
 import dayjs from "dayjs";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { ROUTE } from "constants/constantsGlobal";
 
 const customArrow = ({ type }) => {
   return (
@@ -55,41 +58,51 @@ const DetailClinic = () => {
   const [clinicData, setClinicData] = useState();
   const [doctorList, setDoctorList] = useState();
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
-  const [selectedDoctor, setSelectedDoctor] = useState();
-  const [selectedDate, setSelectedDate] = useState(dayjs().format("DD/MM/YYYY"));
-  const dispatch = useDispatch();
+  const [bookedList, setBookedList] = useState();
 
+  const [selectedDoctor, setSelectedDoctor] = useState();
+
+  const [selectedDate, setSelectedDate] = useState(dayjs().format("DD/MM/YYYY"));
+  const userId = localStorageUlti("dataUser").get().id;
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     async function fetchData() {
       try {
-        dispatch(setIsPerLoading(true));
+        dispatch(setSkeleton(true));
         const getResponseClinic = await clientServer.get(
           `clinicList?id=${currentIdClinic}`
         );
         const getResponseDoctor = await clientServer.get(`doctorList?clinicId=1`);
+        const getResponseBooked = await axios.get(
+          `https://64131b563b710647375fa688.mockapi.io/bookedList/${userId}`
+        );
+
+        setBookedList(getResponseBooked.data);
 
         setClinicData(getResponseClinic.data[0]);
         setDoctorList(getResponseDoctor.data[0].doctors);
       } catch (error) {
         console.error(error);
       } finally {
-        dispatch(setIsPerLoading(false));
+        dispatch(setSkeleton(false));
       }
     }
 
     fetchData();
   }, []);
 
-  const fillterOptionTimeSlot = (listOptions, idDoctor, date) => {
+  const fillterOptionTimeSlot = (listOptions, indexDoctor, date) => {
     // lấy index trong data disabled của ngày được user chọn
-    const disabledIndex = doctorList[idDoctor - 1].appointmentSchedule.findIndex(
+    const disabledIndex = doctorList[indexDoctor].appointmentSchedule.findIndex(
       (element) => element.date === date
     );
 
     //lấy ra danh sách timeSlot đã được đặt
     const disabledTime =
       disabledIndex >= 0
-        ? doctorList[idDoctor - 1].appointmentSchedule[disabledIndex].time
+        ? doctorList[indexDoctor].appointmentSchedule[disabledIndex].time
         : [];
 
     //xử lý timeSlot đã qua trong ngày
@@ -102,10 +115,11 @@ const DetailClinic = () => {
     });
 
     if (date === dayjs().format("DD/MM/YYYY")) {
-      for (let i = 0; i < pastTimeSlotIndex; i++) {
+      for (let i = 0; i <= pastTimeSlotIndex; i++) {
         disabledTime.push(listOptions[i]);
       }
     }
+
     //Cuối cùng là trả về timeSlot có thể chọn
 
     return listOptions.filter((item, index) => {
@@ -113,11 +127,58 @@ const DetailClinic = () => {
     });
   };
 
-  const handleBooking = (doctorId, date, timeSlot) => {
-    if (doctorId && date && timeSlot) {
-      toast.success("🦄 Wow so easy!", settingToast);
+  const handleBooking = (doctorIndex, date, timeSlot) => {
+    if (doctorIndex !== undefined && date && timeSlot) {
+      if (
+        dayjs(timeSlot, "HH:mm").isBefore(dayjs(dayjs().format("H:MM"), "HH:mm")) &&
+        date === dayjs().format("DD/MM/YYYY")
+      ) {
+        toast.warning("🦄 You must select enough fields!", settingToast);
+      } else {
+        const data = {
+          clinicId: clinicData.id,
+          doctorId: doctorList[selectedDoctor].doctorId,
+          clinicName: clinicData.name,
+          doctorName: doctorList[selectedDoctor].name,
+          date: selectedDate,
+          timeSlot: selectedTimeSlot,
+          status: "Pending",
+        };
+
+        const newDataBooked =
+          bookedList === {}
+            ? {
+                id: userId,
+                userId: userId,
+                booked: [data],
+              }
+            : {
+                ...bookedList,
+                booked: [...bookedList.booked, data],
+              };
+
+        async function putData() {
+          try {
+            toast.info("chờ đợi là vàng.", settingToast);
+            dispatch(setPerLoading(true));
+
+            const getResponseBooked = await axios.put(
+              `https://64131b563b710647375fa688.mockapi.io/bookedList/${userId}`,
+              newDataBooked
+            );
+          } catch (error) {
+            toast.error(`🦄 ${error}`, settingToast);
+          } finally {
+            dispatch(setPerLoading(false));
+            toast.success("🦄 Đặt thành công rồi waooooooooo", settingToast);
+            navigate(`${ROUTE.PROFILE}?type=appointment_schedule`);
+          }
+        }
+
+        putData();
+      }
     } else {
-      toast.warning("🦄 You have not entered enough fields!", settingToast);
+      toast.warning("🦄 You must select enough fields!", settingToast);
     }
   };
 
@@ -202,9 +263,9 @@ const DetailClinic = () => {
                   onChange={setSelectedDoctor}
                   options={
                     doctorList &&
-                    doctorList.map((item) => {
+                    doctorList.map((item, index) => {
                       return {
-                        value: item.doctorId,
+                        value: index,
                         label: item.name,
                       };
                     })
@@ -232,7 +293,7 @@ const DetailClinic = () => {
 
                 <TimeSlotRadioGroup
                   options={
-                    selectedDate && selectedDoctor
+                    selectedDate && selectedDoctor !== undefined
                       ? fillterOptionTimeSlot(
                           clinicData.timeOptions,
                           selectedDoctor,
