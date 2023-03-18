@@ -77,3 +77,13 @@
     }
   }
 }
+.flexGender {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.gender {
+  align-items: center;
+}
