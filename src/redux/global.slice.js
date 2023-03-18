@@ -5,14 +5,18 @@ const globalSlice = createSlice({
   initialState: {
     isLoading: false,
     isPerLoading: false,
+    skeleton: false,
     paramsUrl: {},
   },
   reducers: {
     setLoading: (state, action) => {
       state.isLoading = action.payload;
     },
-    setIsPerLoading: (state, action) => {
+    setPerLoading: (state, action) => {
       state.isPerLoading = action.payload;
+    },
+    setSkeleton: (state, action) => {
+      state.skeleton = action.payload;
     },
     setParamsUrl: (state, action) => {
       state.paramsUrl = { ...state.paramsUrl, ...action.payload };
@@ -20,6 +24,7 @@ const globalSlice = createSlice({
   },
 });
 
-export const { setLoading, setIsPerLoading, setParamsUrl } = globalSlice.actions;
+export const { setLoading, setSkeleton, setParamsUrl, setPerLoading } =
+  globalSlice.actions;
 
 export default globalSlice.reducer;

@@ -6,9 +6,10 @@ import { Outlet } from "react-router-dom";
 import BreadcrumbPage from "components/Layout/Breadcrumb";
 import { Skeleton } from "antd";
 import { useSelector } from "react-redux";
+import PerLoading from "components/Shared/PerLoading";
 
 function DefaultLayout() {
-  const isPerLoading = useSelector((state) => state.globalSlice.isPerLoading);
+  const skeleton = useSelector((state) => state.globalSlice.skeleton);
 
   return (
     <>
@@ -16,8 +17,8 @@ function DefaultLayout() {
       <BreadcrumbPage />
       <main className="containerBody">
         <Skeleton
-          active={isPerLoading}
-          style={{ display: isPerLoading ? "table" : "none" }}
+          active={skeleton}
+          style={{ display: skeleton ? "table" : "none" }}
           paragraph={{
             rows: 25,
           }}
@@ -26,6 +27,7 @@ function DefaultLayout() {
       </main>
       <Footer />
       <Loading />
+      <PerLoading />
     </>
   );
 }
