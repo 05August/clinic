@@ -7,6 +7,7 @@ import DefaultLayout from "layouts/DefaultLayout";
 import Home from "pages/user/Home";
 import DetailClinic from "pages/user/DetailClinic";
 import Login from "pages/user/Login";
+import AboutUs from "pages/user/AboutUs";
 
 import "styles/style.scss";
 function App() {
@@ -33,7 +34,7 @@ function App() {
         />
         <Route path={ROUTE.HOME} element={<DefaultLayout />}>
           <Route index element={<Home />} />
-          <Route path={ROUTE.ABOUT_US} element={<>About us</>} />
+          <Route path={ROUTE.ABOUT_US} element={<AboutUs />} />
           <Route
             path={ROUTE.CLINIC}
             element={
