@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "assets/img/logo.png";
 import * as Yup from "yup";
 import { auth, google, facebook, twitter, github } from "./Firebase";
 import { signInWithPopup, signOut } from "@firebase/auth";
 import { ROUTE } from "constants/constantsGlobal";
+import { localStorageUlti } from "functions/localStorage";
 const Login = () => {
   const [emailLogin, setEmailLogin] = useState("");
   const [passwordLogin, setPasswordLogin] = useState("");
@@ -16,6 +17,8 @@ const Login = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
   const [user, setUser] = useState(null);
+
+  const navigate = useNavigate();
 
   const loginSocial = async (provider) => {
     const result = await signInWithPopup(auth, provider);
@@ -47,11 +50,12 @@ const Login = () => {
       try {
         ///////////////day code len api
         const res = await axios.post(
-          "https://62fbae6be4bcaf53518af2ed.mockapi.io/api/users",
+          "https://64131b563b710647375fa688.mockapi.io/userList",
           {
-            name: values.name,
-            username: values.email,
+            userName: values.name,
+            email: values.email,
             password: values.password,
+            activeAccount: false,
           }
         );
 
@@ -60,15 +64,10 @@ const Login = () => {
       } catch (error) {}
     },
     validationSchema: Yup.object({
-      name: Yup.string()
-        .required(" Required")
-        .min(4, "must be 4 character or more"),
+      name: Yup.string().required(" Required").min(4, "must be 4 character or more"),
       email: Yup.string()
         .required("Required")
-        .matches(
-          /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-          "please enter a validation"
-        ),
+        .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "please enter a validation"),
       password: Yup.string()
         .required("Required")
         .matches(
@@ -86,7 +85,7 @@ const Login = () => {
     const getTodos = async () => {
       try {
         const res = await axios.get(
-          "https://62fbae6be4bcaf53518af2ed.mockapi.io/api/users"
+          "https://64131b563b710647375fa688.mockapi.io/userList"
         );
         setDatabase(res.data);
       } catch (error) {}
@@ -99,13 +98,16 @@ const Login = () => {
     const userData = database.find((user) => {
       console.log("user:", user);
       console.log("2:", 2);
-      return user.username === emailLogin;
+      return user.email === emailLogin;
     });
     if (userData) {
       if (userData.password !== passwordLogin) {
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
         setIsSubmitted(true);
+        localStorageUlti("isLogin").set("true");
+        localStorageUlti("dataUser").set({ id: userData.id, name: userData.userName });
+        userData.activeAccount ? navigate(ROUTE.HOME) : navigate(ROUTE.PROFILE);
       }
     } else {
       setErrorMessages({ name: "uname", message: errors.uname });
@@ -121,9 +123,7 @@ const Login = () => {
   };
   ////////////////tao message khi login dung sai
   const renderErrorMessage = (name) =>
-    name === errorMessages.name && (
-      <div className="error">{errorMessages.message}</div>
-    );
+    name === errorMessages.name && <div className="error">{errorMessages.message}</div>;
 
   return (
     <div>
@@ -131,9 +131,7 @@ const Login = () => {
         <div>User is successfully logged in</div>
       ) : (
         <section className="login">
-          <div
-            className={`login-container${isLogin ? "" : " right-panel-active"}`}
-          >
+          <div className={`login-container${isLogin ? "" : " right-panel-active"}`}>
             <div className="form-container register-item">
               <form onSubmit={formik.handleSubmit}>
                 <input
@@ -144,9 +142,7 @@ const Login = () => {
                   value={formik.values.name}
                   onChange={formik.handleChange}
                 />
-                {formik.errors.name && (
-                  <p className="error"> {formik.errors.name}</p>
-                )}
+                {formik.errors.name && <p className="error"> {formik.errors.name}</p>}
 
                 <input
                   type="text"
@@ -156,9 +152,7 @@ const Login = () => {
                   value={formik.values.email}
                   onChange={formik.handleChange}
                 />
-                {formik.errors.email && (
-                  <p className="error"> {formik.errors.email}</p>
-                )}
+                {formik.errors.email && <p className="error"> {formik.errors.email}</p>}
                 <input
                   type="password"
                   id="password"
@@ -278,15 +272,8 @@ const Login = () => {
                   <h1 className="title">
                     Start yout <br /> journy now
                   </h1>
-                  <p>
-                    if you don't have an account yet, join us and start your
-                    journey.
-                  </p>
-                  <button
-                    onClick={() => togglePage()}
-                    className="ghost"
-                    id="register"
-                  >
+                  <p>if you don't have an account yet, join us and start your journey.</p>
+                  <button onClick={() => togglePage()} className="ghost" id="register">
                     Register<i className="fa-thin fa-arrow-right"></i>
                   </button>
                 </div>

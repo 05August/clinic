@@ -10,10 +10,16 @@
 @import "layout/breadcrumb";
 @import "layout/header";
 @import "layout/footer";
-@import "layout/home";
-@import "layout/login";
-@import "layout/detailClinic";
-@import "layout/aboutUs";
+@import "page/aboutUs";
+@import "page/home";
+@import "page/login";
+@import "page/detailClinic";
+@import "page/profile";
+@import "common/timeSlotRadioGroup";
+@import 'react-toastify/dist/ReactToastify.css';
+.App{
+  position: relative;
+}
 
 
 

@@ -181,9 +181,83 @@
     align-items: center;
     width: 200px;
     flex-direction: row-reverse;
-    justify-content: center;
-    .header-login {
-      text-align: center;
+    justify-content: start;
+
+    .header-account {
+      position: relative;
+
+      &:hover {
+        ul {
+          opacity: 1;
+          visibility: visible;
+          margin-top: 0;
+          @include transition-ease-in-out(0.5s);
+        }
+      }
+
+      strong {
+        color: #1f2278;
+        text-decoration: underline;
+        margin-left: 5px;
+      }
+
+      ul {
+        background-color: #fff;
+        top: 30px;
+        left: 0;
+        list-style: none;
+        opacity: 0;
+        padding: 20px 20px 0px 20px;
+        position: absolute;
+        visibility: hidden;
+        width: 180px;
+        z-index: 10;
+        box-shadow: 0 1px 40px 0 rgba(0, 0, 0, 0.1);
+        @include transition-ease-in-out(0.4s);
+
+        .account-dropdown-item {
+          color: #666;
+          display: flex;
+          font-size: 14px;
+          text-transform: capitalize;
+          position: relative;
+          transition: all 0.15s linear;
+          font-weight: 500;
+          margin-bottom: 20px;
+
+          a {
+            display: flex;
+          }
+
+          svg {
+            margin-right: 7px;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            height: 1px;
+            width: 0;
+            background: #565acf;
+            bottom: -5px;
+            right: 0;
+            transform-origin: right;
+            @include transition-ease-in-out(0.5s);
+          }
+
+          &:hover {
+            color: #565acf;
+            cursor: pointer;
+
+            &::after {
+              width: 100%;
+              transform-origin: left;
+              left: 0;
+              right: auto;
+            }
+          }
+        }
+      }
     }
   }
 }

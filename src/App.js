@@ -1,4 +1,4 @@
-import { Empty } from "antd";
+import { Button, Empty, Result } from "antd";
 import { Routes, Route, Link } from "react-router-dom";
 import { ROUTE } from "constants/constantsGlobal";
 
@@ -10,6 +10,9 @@ import Login from "pages/user/Login";
 import AboutUs from "pages/user/AboutUs";
 
 import "styles/style.scss";
+import Clinic from "pages/user/Clinic";
+import Profile from "pages/user/Profile";
+import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <div className="App">
@@ -18,37 +21,37 @@ function App() {
         <Route
           path={ROUTE.NOT_FOUND}
           element={
-            <Link
-              to={ROUTE.HOME}
-              style={{
-                display: "block",
-                margin: "20% auto",
-                fontWeight: "bold",
-                fontSize: 40,
-                width: 475,
-              }}
-            >
-              <Empty />
+            <Link to={ROUTE.HOME}>
+              <Result
+                status="404"
+                title="404"
+                subTitle="Sorry , the page you visited will be completed soon!"
+                extra={<Button type="primary">Back Home</Button>}
+              />
             </Link>
           }
         />
         <Route path={ROUTE.HOME} element={<DefaultLayout />}>
           <Route index element={<Home />} />
-          <Route path={ROUTE.ABOUT_US} element={<AboutUs />} />
-          <Route
-            path={ROUTE.CLINIC}
-            element={
-              <div
-                style={{ textAlign: "center", padding: "100px 0px", fontSize: "50px" }}
-              >
-                <h1>Clinic Coming Soon...</h1>
-              </div>
-            }
-          />
+          <Route path={ROUTE.ABOUT_US} element={<>About us</>} />
+          <Route path={ROUTE.CLINIC} element={<Clinic />} />
           <Route path={ROUTE.CLINIC_DETAIL} element={<DetailClinic />} />
+          <Route path={ROUTE.PROFILE} element={<Profile />} />
         </Route>
         <Route path={ROUTE.LOGIN} element={<Login />} />
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 }

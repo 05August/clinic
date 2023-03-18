@@ -1,0 +1,321 @@
+@import "../rule/variables.scss";
+@import "../rule/mixin.scss";
+
+.info-clinic {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  // background: url("../../assets/img/footerbg.jpg") no-repeat center center;
+  // background-size: cover;
+  background: #fcfbff;
+  position: relative;
+
+  .info-container {
+    .info-content {
+      .clinic-name {
+        font-size: 40px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #1f2278;
+        text-align: center;
+        background: url("../../assets/img/bg_title.png") repeat 50%;
+      }
+
+      .clinic-decription {
+        font-size: 15px;
+        margin-bottom: 15px;
+        line-height: 1.2;
+        color: #545454;
+      }
+
+      .clinic-contact,
+      .clinic-service {
+        h3 {
+          background: url("../../assets/img/bg_title_2.png") repeat 50%;
+          display: inline-block;
+          font-weight: 700;
+          padding: 3px 15px;
+          margin-bottom: 15px;
+          color: #f17732;
+        }
+
+        ul {
+          margin-bottom: 25px;
+
+          li {
+            font-weight: 500;
+            font-size: 15px;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 35px;
+            display: flex;
+            align-items: center;
+
+            &:hover svg {
+              background-color: $primary-color;
+              color: #ffffff;
+              transform: rotateY(360deg);
+            }
+
+            svg {
+              display: inline-block;
+              background-color: #dee6f5;
+              width: 25px;
+              height: 25px;
+              line-height: 25px;
+              border-radius: 50%;
+              font-size: 16px;
+              color: $primary-color;
+              position: absolute;
+              left: 0;
+              @include transition-ease-in-out(0.4s);
+            }
+          }
+        }
+      }
+    }
+
+    .info-img {
+      display: flex;
+      align-items: center;
+      max-height: 600px;
+
+      img {
+        object-fit: cover;
+        display: block;
+        width: 100%;
+        height: 80%;
+        border-radius: 20px;
+      }
+    }
+  }
+}
+
+.doctor-list {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  position: relative;
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 45px;
+
+    h6 {
+      background: url("../../assets/img/bg_title_2.png") repeat 50%;
+      display: inline-block;
+      font-weight: 700;
+      padding: 3px 15px;
+      margin-bottom: 15px;
+      color: $secondary-color;
+    }
+
+    h2 {
+      font-size: 45px;
+      color: #1f2278;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+  }
+
+  .doctor-slide {
+    position: relative;
+
+    &:hover {
+      .slick-arrow {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .slick-prev {
+        left: 70px;
+      }
+
+      .slick-next {
+        right: 70px;
+      }
+    }
+
+    .slick-list {
+      overflow: hidden;
+      padding-left: 15px;
+
+      .slick-track {
+        display: flex;
+        min-height: 530px;
+      }
+    }
+
+    .slick-arrow {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      @include transition-ease-in-out(0.4s);
+    }
+
+    .slick-prev {
+      left: 120px;
+    }
+
+    .slick-next {
+      right: 120px;
+    }
+  }
+}
+
+.booking {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  position: relative;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 45px;
+
+    h6 {
+      background: url("../../assets/img/bg_title_2.png") repeat 50%;
+      display: inline-block;
+      font-weight: 700;
+      padding: 3px 15px;
+      margin-bottom: 15px;
+      color: $secondary-color;
+    }
+
+    h2 {
+      font-size: 45px;
+      color: #1f2278;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+  }
+
+  &__container {
+    padding: 40px;
+    border: 2px solid $primary-color;
+    border-radius: 40px;
+
+    .ant-typography {
+      color: $primary-color;
+      display: flex;
+      width: 180px;
+      padding-left: 15px;
+      margin-bottom: 1em;
+    }
+
+    &--button {
+      width: 100%;
+      display: block;
+      margin: 0;
+      padding-top: 30px;
+      text-align: center;
+
+      button {
+        width: 150px;
+        height: 50px;
+        border: none;
+        outline: none;
+        color: #fff;
+        background: $primary-color;
+        cursor: pointer;
+        position: relative;
+        z-index: 1;
+        border-radius: 10px;
+
+        &:before {
+          content: "";
+          background: linear-gradient(
+            45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000
+          );
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          background-size: 400%;
+          z-index: -1;
+          filter: blur(5px);
+          width: calc(100% + 4px);
+          height: calc(100% + 4px);
+          animation: glowing 20s linear infinite;
+          opacity: 0;
+          transition: opacity 0.3s ease-in-out;
+          border-radius: 10px;
+        }
+
+        &:active {
+          color: #000;
+        }
+
+        &:active:after {
+          background: transparent;
+        }
+
+        &:hover:before {
+          opacity: 1;
+        }
+
+        &:after {
+          z-index: -1;
+          content: "";
+          position: absolute;
+          background: $primary-color;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          border-radius: 10px;
+        }
+
+        @include keyframes(glowing) {
+          0% {
+            background-position: 0 0;
+          }
+          50% {
+            background-position: 400% 0;
+          }
+          100% {
+            background-position: 0 0;
+          }
+        }
+      }
+    }
+
+    &--date {
+      .ant-picker-calendar {
+        border: 2px solid rgba(86, 90, 207, 0.2);
+        padding: 10px 15px;
+
+        .ant-picker-panel {
+          border: 2px solid rgba(86, 90, 207, 0.2);
+          padding: 5px;
+
+          .ant-picker-body {
+            padding-bottom: 0px;
+
+            .ant-picker-cell-disabled.ant-picker-cell-selected {
+              div {
+                color: unset;
+                background-color: unset;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &--time {
+      .time-slot-item {
+        display: flex;
+        align-items: center;
+        padding-bottom: 10px;
+        padding-left: 20px;
+      }
+    }
+  }
+}

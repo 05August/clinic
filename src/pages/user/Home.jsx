@@ -3,24 +3,25 @@ import { useDispatch } from "react-redux";
 import { Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import axios from "axios";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import { setLoading } from "redux/global.slice";
-import Animation from "components/Shared/Animation";
 import ClinicCard from "components/Common/ClinicCard";
 import { ROUTE } from "constants/constantsGlobal";
 import { DEPARTMENTS, ICON_ANIMATION_DATA } from "constants/constantsHomePage";
-import clientServer from "server/clientServer";
 import { renderAnimationIcon } from "utils/renderAnimationIcon";
 
 const Home = () => {
   const [hotSearchClinic, setHotSearchClinic] = useState([]);
-
   const dispatch = useDispatch();
   useEffect(() => {
+    const url = new URL(`${process.env.REACT_APP_BASE_URL}clinicList`);
+    url.searchParams.append("page", 1);
+    url.searchParams.append("limit", 8);
     async function getPerData() {
       try {
         dispatch(setLoading(true));
-        const getResponse = await clientServer.get("clinicList?_start=0&_end=8");
+        const getResponse = await axios.get(url);
         setHotSearchClinic(getResponse.data);
       } finally {
         dispatch(setLoading(false));
