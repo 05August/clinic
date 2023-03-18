@@ -16,6 +16,7 @@ import { localStorageUlti } from "functions/localStorage";
 import { renderAnimationIcon } from "utils/renderAnimationIcon";
 import { ICON_ANIMATION_DATA } from "constants/constantsDetailClinic";
 import dayjs from "dayjs";
+import { async } from "q";
 
 const customArrow = ({ type }) => {
   return (
@@ -93,13 +94,16 @@ const DetailClinic = () => {
         : [];
 
     //xử lý timeSlot đã qua trong ngày
-    const pastTimeSlotIndex = listOptions.findIndex((item) => {
-      const [startTimeString, endTimeString] = item.split("-");
+    const pastTimeSlotIndex =
+      dayjs().hour() > 17
+        ? listOptions.length
+        : listOptions.findIndex((item) => {
+            const [startTimeString, endTimeString] = item.split("-");
 
-      return dayjs(dayjs().format("H:MM"), "HH:mm").isBefore(
-        dayjs(startTimeString, "HH:mm")
-      );
-    });
+            return dayjs(dayjs().format("H:MM"), "HH:mm").isBefore(
+              dayjs(startTimeString, "HH:mm")
+            );
+          });
 
     if (date === dayjs().format("DD/MM/YYYY")) {
       for (let i = 0; i < pastTimeSlotIndex; i++) {
@@ -115,7 +119,14 @@ const DetailClinic = () => {
 
   const handleBooking = (doctorId, date, timeSlot) => {
     if (doctorId && date && timeSlot) {
-      toast.success("🦄 Wow so easy!", settingToast);
+      if (
+        dayjs(timeSlot, "HH:mm").isBefore(dayjs(dayjs().format("H:MM"), "HH:mm")) &&
+        date === dayjs().format("DD/MM/YYYY")
+      ) {
+        toast.warning("🦄 You have not entered enough fields!", settingToast);
+      } else {
+        toast.success("🦄 Wow so easy!", settingToast);
+      }
     } else {
       toast.warning("🦄 You have not entered enough fields!", settingToast);
     }
