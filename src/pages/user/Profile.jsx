@@ -23,7 +23,7 @@ const Profile = () => {
     activeAccount: false,
   });
   const [bookedList, setBookedList] = useState();
-
+  console.log("🚀 ~ file: Profile.jsx:26 ~ Profile ~ bookedList:", bookedList);
 
   const dispatch = useDispatch();
 
@@ -36,14 +36,14 @@ const Profile = () => {
       try {
         dispatch(setSkeleton(true));
         const user = localStorageUlti("dataUser").get();
-        const getResponseUserData = await axios.get(
-          `https://64131b563b710647375fa688.mockapi.io/userList/${user.id}`
-        );
+        // const getResponseUserData = await axios.get(
+        //   `https://64131b563b710647375fa688.mockapi.io/userList/${user.id}`
+        // );
         const getReponseBookedList = await axios.get(
           `https://64131b563b710647375fa688.mockapi.io/bookedList?userId=${user.id}`
         );
 
-        setDataUser(getResponseUserData.data);
+        // setDataUser(getResponseUserData.data);
         setBookedList(getReponseBookedList.data);
       } finally {
         dispatch(setSkeleton(false));
@@ -119,9 +119,7 @@ const Profile = () => {
           {NAV_BOOKED.map((item) => {
             return (
               <div
-                className={`booked__nav--item ${
-                  navBookedActive === item && "active"
-                }`}
+                className={`booked__nav--item ${navBookedActive === item && "active"}`}
                 onClick={() => {
                   setNavBookedActive(item);
                 }}
@@ -279,9 +277,7 @@ const Profile = () => {
               <Tab.Content>
                 <Tab.Pane eventKey="account">{renderProfile()}</Tab.Pane>
                 <Tab.Pane eventKey="change_password">changepassword</Tab.Pane>
-                <Tab.Pane eventKey="appointment_schedule">
-                  {renderBooked()}
-                </Tab.Pane>
+                <Tab.Pane eventKey="appointment_schedule">{renderBooked()}</Tab.Pane>
               </Tab.Content>
             </Col>
           </Row>

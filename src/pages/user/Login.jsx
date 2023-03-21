@@ -56,7 +56,7 @@ const Login = () => {
       try {
         ///////////////day code len api
         const res = await axios.post(
-          "https://64131b563b710647375fa688.mockapi.io/userList",
+          "https://6416a2d36dc4e32a2555aaf0.mockapi.io/clinic",
           {
             userName: values.name,
             email: values.email,
@@ -70,15 +70,10 @@ const Login = () => {
       } catch (error) {}
     },
     validationSchema: Yup.object({
-      name: Yup.string()
-        .required(" Required")
-        .min(4, "must be 4 character or more"),
+      name: Yup.string().required(" Required").min(4, "must be 4 character or more"),
       email: Yup.string()
         .required("Required")
-        .matches(
-          /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-          "please enter a validation"
-        ),
+        .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "please enter a validation"),
       password: Yup.string()
         .required("Required")
         .matches(
@@ -95,9 +90,7 @@ const Login = () => {
   useEffect(() => {
     const getTodos = async () => {
       try {
-        const res = await axios.get(
-          "https://64131b563b710647375fa688.mockapi.io/userList"
-        );
+        const res = await axios.get("https://6416a2d36dc4e32a2555aaf0.mockapi.io/clinic");
         setDatabase(res.data);
       } catch (error) {}
     };
@@ -137,9 +130,7 @@ const Login = () => {
   };
   ////////////////tao message khi login dung sai
   const renderErrorMessage = (name) =>
-    name === errorMessages.name && (
-      <div className="error">{errorMessages.message}</div>
-    );
+    name === errorMessages.name && <div className="error">{errorMessages.message}</div>;
 
   return (
     <div>
@@ -147,9 +138,7 @@ const Login = () => {
         <div>User is successfully logged in</div>
       ) : (
         <section className="login">
-          <div
-            className={`login-container${isLogin ? "" : " right-panel-active"}`}
-          >
+          <div className={`login-container${isLogin ? "" : " right-panel-active"}`}>
             <div className="form-container register-item">
               <form onSubmit={formik.handleSubmit}>
                 <h1>Register Form</h1>
@@ -161,9 +150,7 @@ const Login = () => {
                   value={formik.values.name}
                   onChange={formik.handleChange}
                 />
-                {formik.errors.name && (
-                  <p className="error"> {formik.errors.name}</p>
-                )}
+                {formik.errors.name && <p className="error"> {formik.errors.name}</p>}
 
                 <input
                   type="text"
@@ -173,9 +160,7 @@ const Login = () => {
                   value={formik.values.email}
                   onChange={formik.handleChange}
                 />
-                {formik.errors.email && (
-                  <p className="error"> {formik.errors.email}</p>
-                )}
+                {formik.errors.email && <p className="error"> {formik.errors.email}</p>}
                 <input
                   type="password"
                   id="password"
@@ -281,15 +266,8 @@ const Login = () => {
                   <h1 className="title">
                     Start yout <br /> journy now
                   </h1>
-                  <p>
-                    if you don't have an account yet, join us and start your
-                    journey.
-                  </p>
-                  <button
-                    onClick={() => togglePage()}
-                    className="ghost"
-                    id="register"
-                  >
+                  <p>if you don't have an account yet, join us and start your journey.</p>
+                  <button onClick={() => togglePage()} className="ghost" id="register">
                     Register<i className="fa-thin fa-arrow-right"></i>
                   </button>
                 </div>

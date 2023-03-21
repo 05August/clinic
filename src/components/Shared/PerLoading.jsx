@@ -16,7 +16,7 @@ const PerLoading = () => {
       }}
     >
       <div className="loading-container">
-        <Spin tip="Loading" size="large"></Spin>
+        {/* <Spin tip="Loading" size="large"></Spin> */}
       </div>
     </div>
   );

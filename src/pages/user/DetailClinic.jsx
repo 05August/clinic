@@ -59,11 +59,16 @@ const DetailClinic = () => {
   const [doctorList, setDoctorList] = useState();
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
   const [bookedList, setBookedList] = useState();
-
   const [selectedDoctor, setSelectedDoctor] = useState();
 
+  const [appointmentSchedule, setAppointmentSchedule] = useState();
+  console.log(
+    "🚀 ~ file: DetailClinic.jsx:65 ~ DetailClinic ~ appointmentSchedule:",
+    appointmentSchedule
+  );
+
   const [selectedDate, setSelectedDate] = useState(dayjs().format("DD/MM/YYYY"));
-  const userId = localStorageUlti("dataUser").get().id;
+  const userId = isLogin && localStorageUlti("dataUser").get().id;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -75,14 +80,16 @@ const DetailClinic = () => {
           `clinicList?id=${currentIdClinic}`
         );
         const getResponseDoctor = await clientServer.get(`doctorList?clinicId=1`);
-        const getResponseBooked = await axios.get(
-          `https://64131b563b710647375fa688.mockapi.io/bookedList/${userId}`
-        );
-
-        setBookedList(getResponseBooked.data);
 
         setClinicData(getResponseClinic.data[0]);
         setDoctorList(getResponseDoctor.data[0].doctors);
+        if (isLogin) {
+          const getResponseBooked = await axios.get(
+            `https://64131b563b710647375fa688.mockapi.io/bookedList/${userId}`
+          );
+
+          setBookedList(getResponseBooked.data);
+        }
       } catch (error) {
         console.error(error);
       } finally {
@@ -93,29 +100,53 @@ const DetailClinic = () => {
     fetchData();
   }, []);
 
-  const fillterOptionTimeSlot = (listOptions, indexDoctor, date) => {
-    // lấy index trong data disabled của ngày được user chọn
-    const disabledIndex = doctorList[indexDoctor].appointmentSchedule.findIndex(
-      (element) => element.date === date
-    );
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        dispatch(setPerLoading(true));
+        const getResponseAppointmentSchedule = await axios.get(
+          `https://64131b563b710647375fa688.mockapi.io/appointmentSchedule`
+        );
+        setAppointmentSchedule(
+          getResponseAppointmentSchedule.data.find(
+            (e) =>
+              e.clinicId === clinicData.id &&
+              e.doctorId === doctorList[selectedDoctor].doctorId
+          )
+        );
+      } catch (error) {
+      } finally {
+        dispatch(setPerLoading(false));
+      }
+    }
 
+    isLogin && fetchData();
+  }, [selectedDoctor]);
+
+  const fillterOptionTimeSlot = (listOptions, indexDoctor, date) => {
     //lấy ra danh sách timeSlot đã được đặt
-    const disabledTime =
-      disabledIndex >= 0
-        ? doctorList[indexDoctor].appointmentSchedule[disabledIndex].time
-        : [];
+    const disabledTime = [];
+    const dataDisabled =
+      appointmentSchedule && appointmentSchedule.info.find((item) => item.date === date);
+    dataDisabled &&
+      dataDisabled.content.forEach((element) => {
+        disabledTime.push(element.time);
+      });
 
     //xử lý timeSlot đã qua trong ngày
-    const pastTimeSlotIndex = listOptions.findIndex((item) => {
-      const [startTimeString, endTimeString] = item.split("-");
+    const pastTimeSlotIndex =
+      dayjs().hour() > 17
+        ? listOptions.length
+        : listOptions.findIndex((item) => {
+            const [startTimeString, endTimeString] = item.split("-");
 
-      return dayjs(dayjs().format("H:MM"), "HH:mm").isBefore(
-        dayjs(startTimeString, "HH:mm")
-      );
-    });
+            return dayjs(dayjs().format("H:MM"), "HH:mm").isBefore(
+              dayjs(startTimeString, "HH:mm")
+            );
+          });
 
     if (date === dayjs().format("DD/MM/YYYY")) {
-      for (let i = 0; i <= pastTimeSlotIndex; i++) {
+      for (let i = 0; i < pastTimeSlotIndex; i++) {
         disabledTime.push(listOptions[i]);
       }
     }
@@ -135,7 +166,7 @@ const DetailClinic = () => {
       ) {
         toast.warning("🦄 You must select enough fields!", settingToast);
       } else {
-        const data = {
+        const dataBooked = {
           clinicId: clinicData.id,
           doctorId: doctorList[selectedDoctor].doctorId,
           clinicName: clinicData.name,
@@ -150,11 +181,11 @@ const DetailClinic = () => {
             ? {
                 id: userId,
                 userId: userId,
-                booked: [data],
+                booked: [dataBooked],
               }
             : {
                 ...bookedList,
-                booked: [...bookedList.booked, data],
+                booked: [...bookedList.booked, dataBooked],
               };
 
         async function putData() {
@@ -162,10 +193,47 @@ const DetailClinic = () => {
             toast.info("chờ đợi là vàng.", settingToast);
             dispatch(setPerLoading(true));
 
-            const getResponseBooked = await axios.put(
+            const putResponseBooked = await axios.put(
               `https://64131b563b710647375fa688.mockapi.io/bookedList/${userId}`,
               newDataBooked
             );
+
+            if (appointmentSchedule) {
+              const indexAppointmentSchedule = appointmentSchedule.info.findIndex(
+                (element) => element.date === selectedDate
+              );
+              const newData = appointmentSchedule;
+              indexAppointmentSchedule !== -1 &&
+                newData.info[indexAppointmentSchedule].content.push({
+                  time: selectedTimeSlot,
+                  userId: userId,
+                });
+              const putNewDataAppointment = await axios.put(
+                `https://64131b563b710647375fa688.mockapi.io/appointmentSchedule/${appointmentSchedule.id}`,
+                newData
+              );
+            } else {
+              const newData = {
+                clinicId: clinicData.id,
+                doctorId: doctorList[selectedDoctor].doctorId,
+                info: [
+                  {
+                    date: selectedDate,
+                    content: [
+                      {
+                        time: selectedTimeSlot,
+                        userId: userId,
+                      },
+                    ],
+                  },
+                ],
+              };
+
+              const putNewDataAppointment = await axios.post(
+                `https://64131b563b710647375fa688.mockapi.io/appointmentSchedule`,
+                newData
+              );
+            }
           } catch (error) {
             toast.error(`🦄 ${error}`, settingToast);
           } finally {
