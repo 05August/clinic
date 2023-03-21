@@ -60,18 +60,13 @@ const DetailClinic = () => {
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
   const [bookedList, setBookedList] = useState();
   const [selectedDoctor, setSelectedDoctor] = useState();
-
-  const [appointmentSchedule, setAppointmentSchedule] = useState();
-  console.log(
-    "🚀 ~ file: DetailClinic.jsx:65 ~ DetailClinic ~ appointmentSchedule:",
-    appointmentSchedule
-  );
-
   const [selectedDate, setSelectedDate] = useState(dayjs().format("DD/MM/YYYY"));
-  const userId = isLogin && localStorageUlti("dataUser").get().id;
+  const [appointmentSchedule, setAppointmentSchedule] = useState();
 
+  const userId = isLogin && localStorageUlti("dataUser").get().id;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   useEffect(() => {
     async function fetchData() {
       try {
