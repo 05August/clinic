@@ -6,7 +6,7 @@ import { localStorageUlti } from "functions/localStorage";
 
 const convertPunycodeUrl = (str) => encodeURI(str.split(" ").join("-"));
 
-const ClinicCard = ({ data }) => {
+const ClinicCard = ({ data, type }) => {
   const navigate = useNavigate();
   const items = [
     {
@@ -44,7 +44,7 @@ const ClinicCard = ({ data }) => {
   };
 
   return (
-    <div className="card-clinic">
+    <div className={`card-clinic  card-clinic-${type}`}>
       <div className="card-img">
         <div className="cs-pointer" onClick={handleNavigateDetail}>
           <img src={imgSrc} alt="Profile img" className="profile-pic" onError={onError} />

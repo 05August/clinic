@@ -33,7 +33,7 @@ function App() {
         />
         <Route path={ROUTE.HOME} element={<DefaultLayout />}>
           <Route index element={<Home />} />
-          <Route path={ROUTE.ABOUT_US} element={<AboutUs/>} />
+          <Route path={ROUTE.ABOUT_US} element={<AboutUs />} />
           <Route path={ROUTE.CLINIC} element={<Clinic />} />
           <Route path={ROUTE.CLINIC_DETAIL} element={<DetailClinic />} />
           <Route path={ROUTE.PROFILE} element={<Profile />} />
