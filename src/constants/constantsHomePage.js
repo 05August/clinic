@@ -2,7 +2,7 @@ export const DEPARTMENTS = [
   {
     pathImg:
       "https://ld-wp73.template-help.com/wordpress/prod_13983/v1/wp-content/uploads/2017/10/icon-img-5.png",
-    title: "Neurology",
+    title: "Deurology",
     decription: "Treatment perfectly match your goals.",
   },
   {

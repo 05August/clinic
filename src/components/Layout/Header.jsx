@@ -26,11 +26,11 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLogin = localStorageUlti("isLogin", false).get();
-  const dataUser = localStorageUlti("dataUser", { id: 0, name: "admin" }).get();
+  const dataUser = localStorageUlti("dataUser", { id: "", name: "user" }).get();
 
   const handleSubmitSearchForm = (e) => {
     e.preventDefault();
-    searchParams.set("keyword", searchValue.trim().toLowerCase());
+    searchParams.set("keyword", searchValue.trim().toLowerCase() || "");
     setSearchParams(searchParams);
     navigate(`${ROUTE.CLINIC}?keyword=${searchValue.trim().toLowerCase()}`);
   };
@@ -107,11 +107,12 @@ const Header = () => {
       <div className="header-right">
         {isLogin ? (
           <div className="header-account">
-            Xin chào
+            Hello
             <strong>
               <Link to={`${ROUTE.PROFILE}?type=account`}>
-                {dataUser.name || `user${dataUser.id}`}!
+                {dataUser.name || `user${dataUser.id}`}
               </Link>
+              !
             </strong>
             <ul className="account-dropdown">
               <li className="account-dropdown-item">

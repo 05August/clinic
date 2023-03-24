@@ -20,7 +20,7 @@ function DefaultLayout() {
           active={skeleton}
           style={{ display: skeleton ? "table" : "none" }}
           paragraph={{
-            rows: 25,
+            rows: 50,
           }}
         />
         <Outlet />

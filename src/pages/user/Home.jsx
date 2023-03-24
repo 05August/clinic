@@ -244,7 +244,7 @@ const Home = () => {
                   >
                     <div className="department-img">
                       <Link
-                        to={`${ROUTE.CLINIC}/${item.title
+                        to={`${ROUTE.CLINIC}?keyword=${item.title
                           .toLowerCase()
                           .replace(/[^a-z0-9\-]/g, "-")}`}
                       >
@@ -254,7 +254,7 @@ const Home = () => {
                     <div className="department-content">
                       <div className="title">
                         <Link
-                          to={`${ROUTE.CLINIC}/${item.title
+                          to={`${ROUTE.CLINIC}?keyword=${item.title
                             .toLowerCase()
                             .replace(/[^a-z0-9\-]/g, "-")}`}
                         >
