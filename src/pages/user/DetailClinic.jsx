@@ -18,7 +18,7 @@ import { ICON_ANIMATION_DATA } from "constants/constantsDetailClinic";
 import dayjs from "dayjs";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { ROUTE } from "constants/constantsGlobal";
+import { ROUTE, SETTING_TOAST } from "constants/constantsGlobal";
 
 const customArrow = ({ type }) => {
   return (
@@ -39,17 +39,6 @@ const settingSlide = {
   cssEase: "linear",
   nextArrow: customArrow({ type: "next" }),
   prevArrow: customArrow({ type: "prev" }),
-};
-
-const settingToast = {
-  position: "top-right",
-  autoClose: 1000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-  theme: "light",
 };
 
 const DetailClinic = () => {
@@ -159,7 +148,7 @@ const DetailClinic = () => {
         dayjs(timeSlot, "HH:mm").isBefore(dayjs(dayjs().format("H:MM"), "HH:mm")) &&
         date === dayjs().format("DD/MM/YYYY")
       ) {
-        toast.warning("🦄 You must select enough fields!", settingToast);
+        toast.warning("🦄 You must select enough fields!", SETTING_TOAST);
       } else {
         const dataBooked = {
           clinicId: clinicData.id,
@@ -185,7 +174,7 @@ const DetailClinic = () => {
 
         async function putData() {
           try {
-            toast.info("chờ đợi là vàng.", settingToast);
+            toast.info("chờ đợi là vàng.", SETTING_TOAST);
             dispatch(setPerLoading(true));
 
             const putResponseBooked = await axios.put(
@@ -230,10 +219,10 @@ const DetailClinic = () => {
               );
             }
           } catch (error) {
-            toast.error(`🦄 ${error}`, settingToast);
+            toast.error(`🦄 ${error}`, SETTING_TOAST);
           } finally {
             dispatch(setPerLoading(false));
-            toast.success("🦄 Đặt thành công rồi waooooooooo", settingToast);
+            toast.success("🦄 Đặt thành công rồi waooooooooo", SETTING_TOAST);
             navigate(`${ROUTE.PROFILE}?type=appointment_schedule`);
           }
         }
@@ -241,7 +230,7 @@ const DetailClinic = () => {
         putData();
       }
     } else {
-      toast.warning("🦄 You must select enough fields!", settingToast);
+      toast.warning("🦄 You must select enough fields!", SETTING_TOAST);
     }
   };
 

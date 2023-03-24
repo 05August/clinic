@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams, Link, useNavigate } from "react-router-dom";
 import logo from "assets/img/logo.png";
-import { ROUTE } from "constants/constantsGlobal";
+import { ROUTE, SETTING_TOAST } from "constants/constantsGlobal";
 import { NAV_DATA } from "constants/constantsHeader";
 import { HiPlusSm, HiOutlineSearch } from "react-icons/hi";
 import { localStorageUlti } from "functions/localStorage";
@@ -9,6 +9,7 @@ import { FaCalendarPlus, FaExchangeAlt, FaUser } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { setLoading } from "redux/global.slice";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const [offset, setOffset] = useState(0);
@@ -138,6 +139,7 @@ const Header = () => {
                   dispatch(setLoading(true));
                   localStorageUlti("isLogin").remove();
                   localStorageUlti("dataUser").remove();
+                  toast.success("🦄 Đăng Xuất Thành Công rồi waooooooooo", SETTING_TOAST);
 
                   setTimeout(() => {
                     navigate(ROUTE.LOGIN);
