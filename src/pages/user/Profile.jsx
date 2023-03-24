@@ -1,29 +1,31 @@
 import { Table } from "antd";
 import axios from "axios";
+import { SETTING_TOAST } from "constants/constantsGlobal";
 import { LIST_KEY } from "constants/constantsProfile";
+import dayjs from "dayjs";
 import { localStorageUlti } from "functions/localStorage";
 import React, { useEffect, useState } from "react";
 import { Col, Container, Nav, Row, Tab } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { setSkeleton } from "redux/global.slice";
 
 const Profile = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [type, setType] = useState("account");
   const [navBookedActive, setNavBookedActive] = useState("All");
-  const [dataUser, setDataUser] = useState();
+  const [dataUser, setDataUser] = useState(localStorageUlti("dataUser").get());
   const [userProfile, setUserProfile] = useState({
     userName: "",
     fullName: "",
     email: "",
-    phone: "",
+    phoneNumber: "",
     dateOfBirth: "",
     gender: "",
     activeAccount: false,
   });
-  const [bookedList, setBookedList] = useState();
-  console.log("🚀 ~ file: Profile.jsx:26 ~ Profile ~ bookedList:", bookedList);
+  const [bookedList, setBookedList] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -35,15 +37,17 @@ const Profile = () => {
     async function getPerData() {
       try {
         dispatch(setSkeleton(true));
-        const user = localStorageUlti("dataUser").get();
-        // const getResponseUserData = await axios.get(
-        //   `https://64131b563b710647375fa688.mockapi.io/userList/${user.id}`
-        // );
-        const getReponseBookedList = await axios.get(
-          `https://64131b563b710647375fa688.mockapi.io/bookedList?userId=${user.id}`
+        const getResponseUserData = await axios.get(
+          `https://6416a2d36dc4e32a2555aaf0.mockapi.io/clinic/${dataUser.id}`
         );
-
-        // setDataUser(getResponseUserData.data);
+        const getReponseBookedList = await axios.get(
+          `https://64131b563b710647375fa688.mockapi.io/bookedList?userId=${dataUser.id}`
+        );
+        setUserProfile({
+          ...userProfile,
+          ...getResponseUserData.data,
+        });
+        setDataUser(getResponseUserData.data);
         setBookedList(getReponseBookedList.data);
       } finally {
         dispatch(setSkeleton(false));
@@ -101,17 +105,18 @@ const Profile = () => {
     ];
 
     const data =
-      bookedList &&
-      fillterStatus(bookedList[0].booked).map((item, index) => {
-        return {
-          key: `booked-${index}`,
-          clinic: item.clinicName,
-          doctor: item.doctorName,
-          date: item.date,
-          time: item.timeSlot,
-          status: item.status,
-        };
-      });
+      bookedList.length > 0
+        ? fillterStatus(bookedList[0].booked).map((item, index) => {
+            return {
+              key: `booked-${index}`,
+              clinic: item.clinicName,
+              doctor: item.doctorName,
+              date: item.date,
+              time: item.timeSlot,
+              status: item.status,
+            };
+          })
+        : [];
 
     return (
       <div className="booked">
@@ -136,6 +141,7 @@ const Profile = () => {
       </div>
     );
   };
+
   const handleChangeProfile = (e) => {
     e.preventDefault();
     const name = e.target.name;
@@ -150,12 +156,15 @@ const Profile = () => {
       console.log("userProfile:", userProfile);
 
       try {
-        const res = await axios.post(
-          "https://62fbae6be4bcaf53518af2ed.mockapi.io/api/users",
+        const res = await axios.put(
+          `https://6416a2d36dc4e32a2555aaf0.mockapi.io/clinic/${userProfile.id}`,
           { ...userProfile, activeAccount: true }
         );
-        // console.log("res.data:", res.data);
-      } catch (error) {}
+      } catch (error) {
+        toast.error(error, SETTING_TOAST);
+      } finally {
+        toast.success("🦄 Lưu Thông Tin Thành Công rồi waooooooooo", SETTING_TOAST);
+      }
     };
     return (
       <form onSubmit={handleSubmitProfile}>
@@ -169,6 +178,7 @@ const Profile = () => {
               className="form-control"
               placeholder="User Name"
               required
+              value={userProfile.userName}
             />
           </div>
           <label className="col-sm-2 col-form-label">Full Name</label>
@@ -180,29 +190,32 @@ const Profile = () => {
               className="form-control"
               placeholder="Full Name"
               required
+              value={userProfile.fullName}
             />
           </div>
           <label className="col-sm-2 col-form-label">Email</label>
           <div className="col-sm-10">
             <input
-              value={localStorageUlti("emailSocial").get()}
+              // value={localStorageUlti("emailSocial").get()}
               disabled
               onChange={handleChangeProfile}
               name="email"
               type="email"
               className="form-control"
               placeholder="Email"
+              value={userProfile.email}
             />
           </div>
           <label className="col-sm-2 col-form-label">Phone Number</label>
           <div className="col-sm-10">
             <input
               onChange={handleChangeProfile}
-              name="phone"
+              name="phoneNumber"
               type="tel"
               className="form-control"
               placeholder="Phone Number"
               required
+              value={userProfile.phoneNumber}
             />
           </div>
           <label className="col-sm-2 col-form-label">Date Of Birth</label>
@@ -214,6 +227,7 @@ const Profile = () => {
               className="form-control"
               placeholder="Date Of Birth"
               required
+              value={userProfile.dateOfBirth}
             />
           </div>
           <label className="col-sm-2 col-form-label">Gender</label>
@@ -227,6 +241,7 @@ const Profile = () => {
                 id="male"
                 value="male"
                 required
+                checked={userProfile.gender === "male"}
               />
             </div>
             <div className="gender">
@@ -238,6 +253,7 @@ const Profile = () => {
                 id="female"
                 value="female"
                 required
+                checked={userProfile.gender === "female"}
               />
             </div>
             <div className="gender">
@@ -248,6 +264,7 @@ const Profile = () => {
                 name="gender"
                 id="other"
                 value="other"
+                checked={userProfile.gender === "other"}
                 required
               />
             </div>
