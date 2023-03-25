@@ -9,7 +9,7 @@ import { Col, Container, Nav, Row, Tab } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { setSkeleton } from "redux/global.slice";
+import { setPerLoading, setSkeleton } from "redux/global.slice";
 
 const Profile = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -153,8 +153,8 @@ const Profile = () => {
   const renderProfile = () => {
     const handleSubmitProfile = async (e) => {
       e.preventDefault();
-      console.log("userProfile:", userProfile);
-
+      toast.info("chờ đợi là vàng.", SETTING_TOAST);
+      dispatch(setPerLoading(true));
       try {
         const res = await axios.put(
           `https://6416a2d36dc4e32a2555aaf0.mockapi.io/clinic/${userProfile.id}`,
@@ -163,6 +163,12 @@ const Profile = () => {
       } catch (error) {
         toast.error(error, SETTING_TOAST);
       } finally {
+        dispatch(setPerLoading(false));
+        localStorageUlti("dataUser").set({
+          ...localStorageUlti("dataUser").get(),
+          name: userProfile.userName,
+        });
+        window.location.reload();
         toast.success("🦄 Lưu Thông Tin Thành Công rồi waooooooooo", SETTING_TOAST);
       }
     };
