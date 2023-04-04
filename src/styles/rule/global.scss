@@ -198,15 +198,18 @@ button.slick-arrow {
   animation: rotation 20s linear infinite;
 }
 
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-}
-
 @media (min-width: 768px) {
   .container {
     max-width: 720px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    max-width: 540px;
+  }
+  .animate {
+    display: none;
   }
 }
 
