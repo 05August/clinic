@@ -18,7 +18,7 @@ const Login = () => {
   const [database, setDatabase] = useState([]);
   const [errorMessages, setErrorMessages] = useState({});
   const [isLoginSocial, setIsLoginSocial] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [isRegister, setIsRegister] = useState(false);
   const [user, setUser] = useState(null);
 
@@ -40,7 +40,7 @@ const Login = () => {
       userDataSocial.activeAccount ? navigate(ROUTE.HOME) : navigate(ROUTE.PROFILE);
     } else {
       await pushData(result);
-      toast.success("🦄 Đăng Nhập Thành Công rồi waooooooooo", SETTING_TOAST);
+      toast.success("🦄 Logged in successfully!", SETTING_TOAST);
 
       navigate(ROUTE.PROFILE);
     }
@@ -135,7 +135,7 @@ const Login = () => {
           id: userData.id,
           name: userData.userName,
         });
-        toast.success("🦄 Đăng Nhập Thành Công rồi waooooooooo", SETTING_TOAST);
+        toast.success("🦄 Logged in successfully!", SETTING_TOAST);
 
         userData.activeAccount ? navigate(ROUTE.HOME) : navigate(ROUTE.PROFILE);
       }

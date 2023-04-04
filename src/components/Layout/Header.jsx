@@ -6,16 +6,19 @@ import { NAV_DATA } from "constants/constantsHeader";
 import { HiPlusSm, HiOutlineSearch } from "react-icons/hi";
 import { localStorageUlti } from "functions/localStorage";
 import { FaCalendarPlus, FaExchangeAlt, FaUser } from "react-icons/fa";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { FiLogOut } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { setLoading } from "redux/global.slice";
 import { toast } from "react-toastify";
+import { Drawer } from "antd";
+import { Container } from "react-bootstrap";
 
 const Header = () => {
   const [offset, setOffset] = useState(0);
   const [searchValue, setSearchValue] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
-
+  const [openDrawer, setOpenDrawer] = useState(false);
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -36,22 +39,9 @@ const Header = () => {
     navigate(`${ROUTE.CLINIC}?keyword=${searchValue.trim().toLowerCase()}`);
   };
 
-  return (
-    <header className={offset > 50 ? "is-fixed header" : "header"}>
-      <div className="header-left">
-        <div className="logo">
-          <Link
-            onClick={() => {
-              setSearchValue("");
-              window.scrollTo(0, 0);
-            }}
-            to={ROUTE.HOME}
-          >
-            <img src={logo} alt="logo" />
-          </Link>
-        </div>
-      </div>
-      <div className="header-center">
+  const renderNav = () => {
+    return (
+      <>
         <div className="header-search">
           <form
             action="/search"
@@ -82,7 +72,7 @@ const Header = () => {
                       setSearchValue("");
                       item.path === ROUTE.HOME && window.scrollTo(0, 0);
                     }}
-                    to={item.path}
+                    to={item.dropData ? "" : item.path}
                   >
                     {item.title} {item.dropData ? <HiPlusSm /> : <></>}
                   </Link>
@@ -104,63 +94,106 @@ const Header = () => {
             })}
           </ul>
         </div>
-      </div>
-      <div className="header-right">
-        {isLogin ? (
-          <div className="header-account">
-            Hello
-            <strong>
-              <Link to={`${ROUTE.PROFILE}?type=account`}>
-                {dataUser.name || `user${dataUser.id}`}
-              </Link>
-              !
-            </strong>
-            <ul className="account-dropdown">
-              <li className="account-dropdown-item">
-                <Link to={`${ROUTE.PROFILE}?type=account`}>
-                  <FaUser />
-                  My Profile
-                </Link>
-              </li>
-              <li className="account-dropdown-item">
-                <Link to={`${ROUTE.PROFILE}?type=change_password`}>
-                  <FaExchangeAlt />
-                  Change Password
-                </Link>
-              </li>
-              <li className="account-dropdown-item">
-                <Link to={`${ROUTE.PROFILE}?type=appointment_schedule`}>
-                  <FaCalendarPlus />
-                  My Booked
-                </Link>
-              </li>
-              <li
-                onClick={() => {
-                  dispatch(setLoading(true));
-                  localStorageUlti("isLogin").remove();
-                  localStorageUlti("dataUser").remove();
-                  toast.success("🦄 Đăng Xuất Thành Công rồi waooooooooo", SETTING_TOAST);
+      </>
+    );
+  };
 
-                  setTimeout(() => {
-                    navigate(ROUTE.LOGIN);
-                    dispatch(setLoading(false));
-                  }, 1000);
-                }}
-                className="account-dropdown-item"
-              >
-                <FiLogOut />
-                Log Out
-              </li>
-            </ul>
-          </div>
-        ) : (
-          <div className="header-login">
-            <Link to={ROUTE.LOGIN} className="btn btn-primary shadow">
-              Login
+  return (
+    <header className={offset > 50 ? "is-fixed header" : "header"}>
+      <Container className="header-container">
+        <div className="header-left">
+          <div className="logo">
+            <Link
+              onClick={() => {
+                setSearchValue("");
+                window.scrollTo(0, 0);
+              }}
+              to={ROUTE.HOME}
+            >
+              <img src={logo} alt="logo" />
             </Link>
           </div>
-        )}
-      </div>
+        </div>
+        <div className="header-center">
+          <div className="header-center-laptop">{renderNav()}</div>
+          <div className="header-center-tablet">
+            <div
+              className="hamburger-button"
+              onClick={() => {
+                setOpenDrawer(true);
+              }}
+            >
+              <GiHamburgerMenu />
+            </div>
+            <Drawer
+              title="Menu"
+              placement="left"
+              onClose={() => {
+                setOpenDrawer(false);
+              }}
+              open={openDrawer}
+            >
+              {renderNav()}
+            </Drawer>
+          </div>
+        </div>
+        <div className="header-right">
+          {isLogin ? (
+            <div className="header-account">
+              Hello
+              <strong>
+                <Link to={`${ROUTE.PROFILE}?type=account`}>
+                  {dataUser.name || `user${dataUser.id}`}
+                </Link>
+                !
+              </strong>
+              <ul className="account-dropdown">
+                <li className="account-dropdown-item">
+                  <Link to={`${ROUTE.PROFILE}?type=account`}>
+                    <FaUser />
+                    My Profile
+                  </Link>
+                </li>
+                <li className="account-dropdown-item">
+                  <Link to={`${ROUTE.PROFILE}?type=change_password`}>
+                    <FaExchangeAlt />
+                    Change Password
+                  </Link>
+                </li>
+                <li className="account-dropdown-item">
+                  <Link to={`${ROUTE.PROFILE}?type=appointment_schedule`}>
+                    <FaCalendarPlus />
+                    My Booked
+                  </Link>
+                </li>
+                <li
+                  onClick={() => {
+                    dispatch(setLoading(true));
+                    localStorageUlti("isLogin").remove();
+                    localStorageUlti("dataUser").remove();
+                    toast.success("🦄 Successful Logout!", SETTING_TOAST);
+
+                    setTimeout(() => {
+                      navigate(ROUTE.LOGIN);
+                      dispatch(setLoading(false));
+                    }, 1000);
+                  }}
+                  className="account-dropdown-item"
+                >
+                  <FiLogOut />
+                  Log Out
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <div className="header-login">
+              <Link to={ROUTE.LOGIN} className="btn btn-primary shadow">
+                Login
+              </Link>
+            </div>
+          )}
+        </div>
+      </Container>
     </header>
   );
 };

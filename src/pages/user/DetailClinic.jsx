@@ -174,7 +174,7 @@ const DetailClinic = () => {
 
         async function putData() {
           try {
-            toast.info("chờ đợi là vàng.", SETTING_TOAST);
+            toast.info("Please wait...", SETTING_TOAST);
             dispatch(setPerLoading(true));
 
             const putResponseBooked = await axios.put(
@@ -222,7 +222,7 @@ const DetailClinic = () => {
             toast.error(`🦄 ${error}`, SETTING_TOAST);
           } finally {
             dispatch(setPerLoading(false));
-            toast.success("🦄 Đặt thành công rồi waooooooooo", SETTING_TOAST);
+            toast.success("🦄 Successful appointment!", SETTING_TOAST);
             navigate(`${ROUTE.PROFILE}?type=appointment_schedule`);
           }
         }
