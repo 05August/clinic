@@ -18,3 +18,5 @@ export const SETTING_TOAST = {
   progress: undefined,
   theme: "light",
 };
+
+export const BREAKPOINT = {};
