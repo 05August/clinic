@@ -418,6 +418,7 @@
 
       .slick-arrow {
         position: absolute;
+        z-index: 1;
         @include transition-ease-in-out(0.4s);
 
         &:hover {
@@ -432,7 +433,7 @@
         width: 80%;
         overflow: hidden;
         margin: 0 auto;
-        padding-left: 25px;
+        text-align: -webkit-center;
 
         .slick-track {
           display: flex;
@@ -527,6 +528,18 @@
       }
       .banner-img {
         margin: 30px 10px;
+      }
+    }
+  }
+
+  .top-search-slide {
+    .slick-slider {
+      .slick-prev {
+        left: 20px;
+      }
+
+      .slick-next {
+        right: 20px;
       }
     }
   }

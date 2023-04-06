@@ -13,6 +13,7 @@ import { renderAnimationIcon } from "utils/renderAnimationIcon";
 
 const Home = () => {
   const [hotSearchClinic, setHotSearchClinic] = useState([]);
+  const [slideToShow, setSlideToShow] = useState(3);
   const dispatch = useDispatch();
   useEffect(() => {
     const url = new URL(`${process.env.REACT_APP_BASE_URL}clinicList`);
@@ -29,6 +30,25 @@ const Home = () => {
     }
     getPerData();
   }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 1300) {
+        if (window.innerWidth < 992) {
+          setSlideToShow(1);
+        } else {
+          setSlideToShow(2);
+        }
+      } else {
+        setSlideToShow(3);
+      }
+    }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   function customArrow({ type }) {
     return (
       <button type="button">
@@ -40,7 +60,7 @@ const Home = () => {
   const settingSlideTopSearch = {
     dots: false,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: slideToShow,
     slidesToScroll: 1,
     autoplay: true,
     speed: 500,
