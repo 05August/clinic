@@ -49,7 +49,9 @@ const DetailClinic = () => {
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
   const [bookedList, setBookedList] = useState();
   const [selectedDoctor, setSelectedDoctor] = useState();
-  const [selectedDate, setSelectedDate] = useState(dayjs().format("DD/MM/YYYY"));
+  const [selectedDate, setSelectedDate] = useState(
+    dayjs().format("DD/MM/YYYY")
+  );
   const [appointmentSchedule, setAppointmentSchedule] = useState();
 
   const userId = isLogin && localStorageUlti("dataUser").get().id;
@@ -63,7 +65,9 @@ const DetailClinic = () => {
         const getResponseClinic = await clientServer.get(
           `clinicList?id=${currentIdClinic}`
         );
-        const getResponseDoctor = await clientServer.get(`doctorList?clinicId=1`);
+        const getResponseDoctor = await clientServer.get(
+          `doctorList?clinicId=1`
+        );
 
         setClinicData(getResponseClinic.data[0]);
         setDoctorList(getResponseDoctor.data[0].doctors);
@@ -111,7 +115,8 @@ const DetailClinic = () => {
     //lấy ra danh sách timeSlot đã được đặt
     const disabledTime = [];
     const dataDisabled =
-      appointmentSchedule && appointmentSchedule.info.find((item) => item.date === date);
+      appointmentSchedule &&
+      appointmentSchedule.info.find((item) => item.date === date);
     dataDisabled &&
       dataDisabled.content.forEach((element) => {
         disabledTime.push(element.time);
@@ -145,7 +150,9 @@ const DetailClinic = () => {
   const handleBooking = (doctorIndex, date, timeSlot) => {
     if (doctorIndex !== undefined && date && timeSlot) {
       if (
-        dayjs(timeSlot, "HH:mm").isBefore(dayjs(dayjs().format("H:MM"), "HH:mm")) &&
+        dayjs(timeSlot, "HH:mm").isBefore(
+          dayjs(dayjs().format("H:MM"), "HH:mm")
+        ) &&
         date === dayjs().format("DD/MM/YYYY")
       ) {
         toast.warning("🦄 You must select enough fields!", SETTING_TOAST);
@@ -183,9 +190,10 @@ const DetailClinic = () => {
             );
 
             if (appointmentSchedule) {
-              const indexAppointmentSchedule = appointmentSchedule.info.findIndex(
-                (element) => element.date === selectedDate
-              );
+              const indexAppointmentSchedule =
+                appointmentSchedule.info.findIndex(
+                  (element) => element.date === selectedDate
+                );
               const newData = appointmentSchedule;
               indexAppointmentSchedule !== -1 &&
                 newData.info[indexAppointmentSchedule].content.push({
@@ -359,13 +367,19 @@ const DetailClinic = () => {
             </Row>
             <Row className="booking__container--button">
               <Tooltip
-                title={isLogin ? "" : "You need to login to make an appointment !"}
+                title={
+                  isLogin ? "" : "You need to login to make an appointment !"
+                }
                 color={"#1677ff"}
               >
                 <button
                   disabled={!isLogin}
                   onClick={() => {
-                    handleBooking(selectedDoctor, selectedDate, selectedTimeSlot);
+                    handleBooking(
+                      selectedDoctor,
+                      selectedDate,
+                      selectedTimeSlot
+                    );
                   }}
                 >
                   Booking

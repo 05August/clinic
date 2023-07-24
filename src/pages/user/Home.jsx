@@ -76,16 +76,21 @@ const Home = () => {
         <Container className="banner-container">
           <Row>
             <Col lg={7} md={6} sm={7} className="banner-content">
-              <h6 className="title bg-title">We Provide All Health Care Solution</h6>
+              <h6 className="title bg-title">
+                We Provide All Health Care Solution
+              </h6>
               <h1>Protect Your Health And Take Care To Of Your Health</h1>
-              <Link className="btn btn-secondary btn-lg shadow" to="/how-we-work">
+              <Link
+                className="btn btn-secondary btn-lg shadow"
+                to="/how-we-work"
+              >
                 How we works ?
               </Link>
             </Col>
             <Col lg={5} md={6} sm={5}>
               <div className="banner-img animate-updown">
                 <img
-                  src="https://meditro.themetrades.com/react/static/media/doctor.7c2bc96d.png"
+                  src="https://i.postimg.cc/ncXMkqL8/doctorbanner.png"
                   alt="doctor"
                 />
               </div>
@@ -133,8 +138,9 @@ const Home = () => {
                 <h6>About Us</h6>
                 <h2>The Great Place Of Medical Hospital Center</h2>
                 <p>
-                  We provide the special tips and advice's of heath care treatment and
-                  high level of best technology involve in the our hospital.
+                  We provide the special tips and advice's of heath care
+                  treatment and high level of best technology involve in the our
+                  hospital.
                 </p>
               </div>
               <Row className="about-feature">

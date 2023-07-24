@@ -2,7 +2,7 @@ import { Table } from "antd";
 import axios from "axios";
 import { SETTING_TOAST } from "constants/constantsGlobal";
 import { LIST_KEY } from "constants/constantsProfile";
-import dayjs from "dayjs";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { localStorageUlti } from "functions/localStorage";
 import React, { useEffect, useState } from "react";
 import { Col, Container, Nav, Row, Tab } from "react-bootstrap";
@@ -79,6 +79,75 @@ const Profile = () => {
     });
   };
 
+  const validate = (value) => {
+    let errorMessage;
+    if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(value)) {
+      errorMessage = "Password isnt valid";
+    }
+    if (value.length === 0) {
+      errorMessage = "Required";
+    }
+    return errorMessage;
+  };
+
+  const handleChangePassword = async (value, resetForm) => {
+    if (value.password === value.repassword) {
+      try {
+        const res = await axios.put(
+          `https://6416a2d36dc4e32a2555aaf0.mockapi.io/clinic/${dataUser.id}`,
+          {
+            password: value.password,
+          }
+        );
+        toast.success("🦄 Successful Change Password!", SETTING_TOAST);
+        resetForm();
+      } catch (error) {
+        toast.error(error, SETTING_TOAST);
+      }
+    } else {
+      toast.error("🦄 Password entered is different!", SETTING_TOAST);
+    }
+  };
+
+  const renderChangePassword = () => {
+    return (
+      <Formik
+        initialValues={{ password: "", repassword: "" }}
+        onSubmit={(values, { resetForm }) =>
+          handleChangePassword(values, resetForm)
+        }
+      >
+        {({ errors, touched }) => (
+          <Form>
+            <div className="change__password--item">
+              <label htmlFor="password">New Password :</label>
+              <div className="input">
+                <Field validate={validate} name="password" type="password" />
+                <div className="error">
+                  <ErrorMessage name="password" />
+                </div>
+              </div>
+            </div>
+
+            <div className="change__password--item">
+              <label htmlFor="password">Confirm Password :</label>
+              <div className="input">
+                <Field validate={validate} name="repassword" type="password" />
+                <div className="error">
+                  <ErrorMessage name="repassword" />
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" className="btn btn-primary btn-save">
+              Save
+            </button>
+          </Form>
+        )}
+      </Formik>
+    );
+  };
+
   const renderBooked = () => {
     const NAV_BOOKED = ["All", "Pending", "Completed", "Cancel"];
     const columns = [
@@ -124,7 +193,9 @@ const Profile = () => {
           {NAV_BOOKED.map((item) => {
             return (
               <div
-                className={`booked__nav--item ${navBookedActive === item && "active"}`}
+                className={`booked__nav--item ${
+                  navBookedActive === item && "active"
+                }`}
                 onClick={() => {
                   setNavBookedActive(item);
                 }}
@@ -169,13 +240,16 @@ const Profile = () => {
           name: userProfile.userName,
         });
         window.location.reload();
-        toast.success("🦄 Lưu Thông Tin Thành Công rồi waooooooooo", SETTING_TOAST);
+        toast.success(
+          "🦄 Lưu Thông Tin Thành Công rồi waooooooooo",
+          SETTING_TOAST
+        );
       }
     };
     return (
       <form onSubmit={handleSubmitProfile}>
         <div className="form-group row">
-          <label className="col-sm-2 col-form-label">User Name</label>
+          <label className="col-sm-2 col-form-label mb-3">User Name</label>
           <div className="col-sm-10">
             <input
               onChange={handleChangeProfile}
@@ -187,7 +261,7 @@ const Profile = () => {
               value={userProfile.userName}
             />
           </div>
-          <label className="col-sm-2 col-form-label">Full Name</label>
+          <label className="col-sm-2 col-form-label mb-3">Full Name</label>
           <div className="col-sm-10">
             <input
               onChange={handleChangeProfile}
@@ -199,7 +273,7 @@ const Profile = () => {
               value={userProfile.fullName}
             />
           </div>
-          <label className="col-sm-2 col-form-label">Email</label>
+          <label className="col-sm-2 col-form-label mb-3">Email</label>
           <div className="col-sm-10">
             <input
               // value={localStorageUlti("emailSocial").get()}
@@ -212,7 +286,7 @@ const Profile = () => {
               value={userProfile.email}
             />
           </div>
-          <label className="col-sm-2 col-form-label">Phone Number</label>
+          <label className="col-sm-2 col-form-label mb-3">Phone Number</label>
           <div className="col-sm-10">
             <input
               onChange={handleChangeProfile}
@@ -224,7 +298,7 @@ const Profile = () => {
               value={userProfile.phoneNumber}
             />
           </div>
-          <label className="col-sm-2 col-form-label">Date Of Birth</label>
+          <label className="col-sm-2 col-form-label mb-3">Date Of Birth</label>
           <div className="col-sm-10">
             <input
               onChange={handleChangeProfile}
@@ -236,7 +310,7 @@ const Profile = () => {
               value={userProfile.dateOfBirth}
             />
           </div>
-          <label className="col-sm-2 col-form-label">Gender</label>
+          <label className="col-sm-2 col-form-label mb-3">Gender</label>
           <div className="col-sm-10 flexGender ">
             <div className="gender">
               <label for="male">Male</label>
@@ -299,8 +373,12 @@ const Profile = () => {
             <Col sm={9} className="profile-content">
               <Tab.Content>
                 <Tab.Pane eventKey="account">{renderProfile()}</Tab.Pane>
-                <Tab.Pane eventKey="change_password">changepassword</Tab.Pane>
-                <Tab.Pane eventKey="appointment_schedule">{renderBooked()}</Tab.Pane>
+                <Tab.Pane eventKey="change_password">
+                  {renderChangePassword()}
+                </Tab.Pane>
+                <Tab.Pane eventKey="appointment_schedule">
+                  {renderBooked()}
+                </Tab.Pane>
               </Tab.Content>
             </Col>
           </Row>
