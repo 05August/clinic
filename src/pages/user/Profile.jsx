@@ -2,7 +2,7 @@ import { Table } from "antd";
 import axios from "axios";
 import { SETTING_TOAST } from "constants/constantsGlobal";
 import { LIST_KEY } from "constants/constantsProfile";
-import dayjs from "dayjs";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { localStorageUlti } from "functions/localStorage";
 import React, { useEffect, useState } from "react";
 import { Col, Container, Nav, Row, Tab } from "react-bootstrap";
@@ -79,6 +79,40 @@ const Profile = () => {
     });
   };
 
+  const validate = (value) => {
+    let errorMessage;
+    if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(value)) {
+      errorMessage =
+        "Regex for password must contain at least eight characters,one number , one special characters";
+    }
+    if (value.length === 0) {
+      errorMessage = "Required";
+    }
+    return errorMessage;
+  };
+
+  const renderChangePassword = () => {
+    return (
+      <Formik
+        initialValues={{ password: "", repassword: "" }}
+        onSubmit={(values) => alert(JSON.stringify(values, null, 2))}
+      >
+        {({ errors, touched }) => (
+          <Form>
+            <label htmlFor="password">New Password :</label>
+            <Field validate={validate} name="password" type="password" />
+            <ErrorMessage name="password" />
+            <label htmlFor="password">Confirm Password :</label>
+            <Field validate={validate} name="repassword" type="password" />
+            <ErrorMessage name="repassword" />
+
+            <button type="submit">Submit</button>
+          </Form>
+        )}
+      </Formik>
+    );
+  };
+
   const renderBooked = () => {
     const NAV_BOOKED = ["All", "Pending", "Completed", "Cancel"];
     const columns = [
@@ -124,7 +158,9 @@ const Profile = () => {
           {NAV_BOOKED.map((item) => {
             return (
               <div
-                className={`booked__nav--item ${navBookedActive === item && "active"}`}
+                className={`booked__nav--item ${
+                  navBookedActive === item && "active"
+                }`}
                 onClick={() => {
                   setNavBookedActive(item);
                 }}
@@ -169,13 +205,16 @@ const Profile = () => {
           name: userProfile.userName,
         });
         window.location.reload();
-        toast.success("🦄 Lưu Thông Tin Thành Công rồi waooooooooo", SETTING_TOAST);
+        toast.success(
+          "🦄 Lưu Thông Tin Thành Công rồi waooooooooo",
+          SETTING_TOAST
+        );
       }
     };
     return (
       <form onSubmit={handleSubmitProfile}>
         <div className="form-group row">
-          <label className="col-sm-2 col-form-label">User Name</label>
+          <label className="col-sm-2 col-form-label mb-3">User Name</label>
           <div className="col-sm-10">
             <input
               onChange={handleChangeProfile}
@@ -187,7 +226,7 @@ const Profile = () => {
               value={userProfile.userName}
             />
           </div>
-          <label className="col-sm-2 col-form-label">Full Name</label>
+          <label className="col-sm-2 col-form-label mb-3">Full Name</label>
           <div className="col-sm-10">
             <input
               onChange={handleChangeProfile}
@@ -199,7 +238,7 @@ const Profile = () => {
               value={userProfile.fullName}
             />
           </div>
-          <label className="col-sm-2 col-form-label">Email</label>
+          <label className="col-sm-2 col-form-label mb-3">Email</label>
           <div className="col-sm-10">
             <input
               // value={localStorageUlti("emailSocial").get()}
@@ -212,7 +251,7 @@ const Profile = () => {
               value={userProfile.email}
             />
           </div>
-          <label className="col-sm-2 col-form-label">Phone Number</label>
+          <label className="col-sm-2 col-form-label mb-3">Phone Number</label>
           <div className="col-sm-10">
             <input
               onChange={handleChangeProfile}
@@ -224,7 +263,7 @@ const Profile = () => {
               value={userProfile.phoneNumber}
             />
           </div>
-          <label className="col-sm-2 col-form-label">Date Of Birth</label>
+          <label className="col-sm-2 col-form-label mb-3">Date Of Birth</label>
           <div className="col-sm-10">
             <input
               onChange={handleChangeProfile}
@@ -236,7 +275,7 @@ const Profile = () => {
               value={userProfile.dateOfBirth}
             />
           </div>
-          <label className="col-sm-2 col-form-label">Gender</label>
+          <label className="col-sm-2 col-form-label mb-3">Gender</label>
           <div className="col-sm-10 flexGender ">
             <div className="gender">
               <label for="male">Male</label>
@@ -299,8 +338,12 @@ const Profile = () => {
             <Col sm={9} className="profile-content">
               <Tab.Content>
                 <Tab.Pane eventKey="account">{renderProfile()}</Tab.Pane>
-                <Tab.Pane eventKey="change_password">changepassword</Tab.Pane>
-                <Tab.Pane eventKey="appointment_schedule">{renderBooked()}</Tab.Pane>
+                <Tab.Pane eventKey="change_password">
+                  {renderChangePassword()}
+                </Tab.Pane>
+                <Tab.Pane eventKey="appointment_schedule">
+                  {renderBooked()}
+                </Tab.Pane>
               </Tab.Content>
             </Col>
           </Row>

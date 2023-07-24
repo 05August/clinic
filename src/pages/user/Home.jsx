@@ -85,7 +85,7 @@ const Home = () => {
             <Col lg={5} md={6} sm={5}>
               <div className="banner-img animate-updown">
                 <img
-                  src="https://meditro.themetrades.com/react/static/media/doctor.7c2bc96d.png"
+                  src="https://i.postimg.cc/ncXMkqL8/doctorbanner.png"
                   alt="doctor"
                 />
               </div>
