@@ -82,8 +82,7 @@ const Profile = () => {
   const validate = (value) => {
     let errorMessage;
     if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(value)) {
-      errorMessage =
-        "Regex for password must contain at least eight characters,one number , one special characters";
+      errorMessage = "Password isnt valid";
     }
     if (value.length === 0) {
       errorMessage = "Required";
@@ -91,22 +90,58 @@ const Profile = () => {
     return errorMessage;
   };
 
+  const handleChangePassword = async (value, resetForm) => {
+    if (value.password === value.repassword) {
+      try {
+        const res = await axios.put(
+          `https://6416a2d36dc4e32a2555aaf0.mockapi.io/clinic/${dataUser.id}`,
+          {
+            password: value.password,
+          }
+        );
+        toast.success("🦄 Successful Change Password!", SETTING_TOAST);
+        resetForm();
+      } catch (error) {
+        toast.error(error, SETTING_TOAST);
+      }
+    } else {
+      toast.error("🦄 Password entered is different!", SETTING_TOAST);
+    }
+  };
+
   const renderChangePassword = () => {
     return (
       <Formik
         initialValues={{ password: "", repassword: "" }}
-        onSubmit={(values) => alert(JSON.stringify(values, null, 2))}
+        onSubmit={(values, { resetForm }) =>
+          handleChangePassword(values, resetForm)
+        }
       >
         {({ errors, touched }) => (
           <Form>
-            <label htmlFor="password">New Password :</label>
-            <Field validate={validate} name="password" type="password" />
-            <ErrorMessage name="password" />
-            <label htmlFor="password">Confirm Password :</label>
-            <Field validate={validate} name="repassword" type="password" />
-            <ErrorMessage name="repassword" />
+            <div className="change__password--item">
+              <label htmlFor="password">New Password :</label>
+              <div className="input">
+                <Field validate={validate} name="password" type="password" />
+                <div className="error">
+                  <ErrorMessage name="password" />
+                </div>
+              </div>
+            </div>
 
-            <button type="submit">Submit</button>
+            <div className="change__password--item">
+              <label htmlFor="password">Confirm Password :</label>
+              <div className="input">
+                <Field validate={validate} name="repassword" type="password" />
+                <div className="error">
+                  <ErrorMessage name="repassword" />
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" className="btn btn-primary btn-save">
+              Save
+            </button>
           </Form>
         )}
       </Formik>
